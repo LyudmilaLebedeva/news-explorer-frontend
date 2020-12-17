@@ -1,0 +1,29 @@
+@import url(__close/popup__close.css);
+@import url(__content/popup__content.css);
+
+.popup {
+  position: fixed;
+  width: 100vw;
+  min-height: 100vh;
+
+  /* display: none; */
+  z-index: 4;
+}
+
+@media screen and (max-width: 619px) {
+  .popup {
+    top: 56px;
+  }
+
+}
+
+@media screen and (min-width: 620px) {
+  .popup {
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, .5);
+    /* display: none; */
+  }
+}

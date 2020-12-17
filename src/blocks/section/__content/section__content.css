@@ -1,0 +1,17 @@
+.section__content {
+  padding: 32px 16px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .section__content {
+    padding: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .section__content {
+    max-width: 1302px;
+    padding: 80px 40px;
+  }
+}

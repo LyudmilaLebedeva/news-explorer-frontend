@@ -1,0 +1,23 @@
+@import url(./__image/card__image.css);
+@import url(./__btn/card__btn.css);
+@import url(./__date/card__date.css);
+@import url(./__title/card__title.css);
+@import url(./__subtitle/card__subtitle.css);
+@import url(./__source/card__source.css);
+@import url(./__text/card__text.css);
+
+.card {
+  width: 100%;
+  background-color: white;
+  margin: 0 auto 13px;
+}
+
+.card:last-of-type {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    margin-bottom: 0;
+  }
+}

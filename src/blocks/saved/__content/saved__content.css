@@ -1,0 +1,17 @@
+.saved__content {
+  padding: 8px 16px 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .saved__content  {
+    padding: 24px 40px 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .saved__content  {
+    margin: auto;
+    max-width: 1312px;
+    padding: 40px 40px 62px;
+  }
+}

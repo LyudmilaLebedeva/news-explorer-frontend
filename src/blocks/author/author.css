@@ -1,0 +1,24 @@
+@import url(./__img/author__img.css);
+@import url(./__pharagraph/author__pharagraph.css);
+@import url(./__text/author__text.css);
+
+.author {
+
+}
+
+@media screen and (min-width: 620px) {
+  .author {
+    display: grid;
+    grid-template-columns: 34% 1fr;
+    gap: 32px;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .author {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: 56px;
+  }
+}

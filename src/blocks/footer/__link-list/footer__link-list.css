@@ -1,0 +1,22 @@
+.footer__link-list {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__link-list {
+    display: flex;
+    margin-right: 24px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .footer__link-list {
+    margin-right: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__link-list {
+    margin-right: 32px;
+  }
+}

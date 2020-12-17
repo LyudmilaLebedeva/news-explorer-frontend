@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>Webpack</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css%>" />
+</head>
+
+<body class="body">
+
+
+
+  <section class="search">
+    <header class="header header_color_white">
+      <h1 class="header__title">NewsExplorer</h1>
+      <nav class="header__menu-button"></nav>
+      <nav class="header__menu">
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="">Главная</a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="">Сохранённые статьи</a>
+          </li>
+          <li class="header__menu-item">
+            <button class="header__auth-button header__auth-button_color_white">
+              Грета<img src="<%=require('./images/logout.svg')%>" class="header__logout-img" />
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="search__text">
+      <h2 class="search__title">Что творится в мире?</h2>
+      <p class="search__subtitle">
+        Находите самые свежие статьи на любую тему и сохраняйте в своём личном
+        кабинете.
+      </p>
+    </div>
+    <form action="" class="search__form">
+      <input type="text" placeholder="Политика" class="search__input" />
+      <input type="submit" value="Искать" class="search__submit" />
+    </form>
+  </section>
+
+
+  <section class="section section_background_blue">
+    <div class="section__content">
+      <h2 class="section__title">Результаты поиска</h2>
+      <div class="card-container">
+        <article class="card">
+          <div class="card__image">
+            <button class="card__btn"></button>
+          </div>
+          <div class="card__text">
+            <time class="card__date">2 августа, 2019</time>
+            <h3 class="card__title">Национальное достояние – парки</h3>
+            <p class="card__subtitle">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь
+              начала складываться система национальных парков – охраняемых
+              территорий, где и сегодня каждый может приобщиться к природе.
+            </p>
+            <cite class="card__source">Лента.ру</cite>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__image">
+            <button class="card__btn"></button>
+          </div>
+          <div class="card__text">
+            <time class="card__date">2 августа, 2019</time>
+            <h3 class="card__title">Национальное достояние – парки</h3>
+            <p class="card__subtitle">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь
+              начала складываться система национальных парков...
+            </p>
+            <cite class="card__source">Лента.ру</cite>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__image">
+            <button class="card__btn"></button>
+          </div>
+          <div class="card__text">
+            <time class="card__date">2 августа, 2019</time>
+            <h3 class="card__title">Национальное достояние – парки</h3>
+            <p class="card__subtitle">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь
+              начала складываться система национальных парков...
+            </p>
+            <cite class="card__source">Лента.ру</cite>
+          </div>
+        </article>
+      </div>
+      <button class="card-container__more">Показать еще</button>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section__content">
+      <article class="author">
+        <img src="<%=require('./images/image-03.png')%>" alt="" class="author__img" />
+        <div class="author__text">
+          <h2 class="section__title">Об авторе</h2>
+          <p class="author__pharagraph">
+            Это блок с описанием автора проекта. Здесь следует указать, как вас
+            зовут, чем вы занимаетесь, какими технологиями разработки владеете.
+          </p>
+          <p class="author__pharagraph">
+            Также можно рассказать о процессе обучения в Практикуме, чему вы тут
+            научились, и чем можете помочь потенциальным заказчикам.
+          </p>
+        </div>
+    </div>
+    </article>
+  </section>
+      <footer class="footer">
+        <div class="footer__links-group">
+          <ul class="footer__link-list">
+            <li class="footer__item">
+              <a href="" class="footer__link">Главная</a>
+            </li>
+            <li class="footer__item">
+              <a href="" class="footer__link">Яндекс.Практикум</a>
+            </li>
+          </ul>
+          <ul class="footer__social">
+            <li class="footer__social-item">
+              <a href="" class="footer__social-link"></a>
+            </li>
+            <li class="footer__social-item">
+              <a href="" class="footer__social-link"></a>
+            </li>
+          </ul>
+        </div>
+        <h4 class="footer__copyright">© 2020 Supersite, Powered by News API</h4>
+      </footer>
+
+  <script src="<%=htmlWebpackPlugin.files.js%>"></script>
+</body>
+
+</html>

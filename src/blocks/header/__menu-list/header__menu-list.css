@@ -1,0 +1,27 @@
+.header__menu-list {
+  list-style-type: none;
+}
+
+@media screen and (max-width: 619px) {
+  .header__menu-list {
+    padding: calc(16px + 56px) 16px 16px;
+    background-color: #1A1B22;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    z-index: -1;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .header__menu-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__menu-list {
+    font-size: 18px;
+  }
+}

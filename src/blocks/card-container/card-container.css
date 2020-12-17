@@ -1,0 +1,23 @@
+@import url(__more/card-container__more.css);
+
+.card-container {
+  width: 100%;
+  margin: 0 auto;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+  gap: 8px; */
+}
+
+@media screen and (min-width: 768px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card-container {
+    gap: 16px;
+  }
+}

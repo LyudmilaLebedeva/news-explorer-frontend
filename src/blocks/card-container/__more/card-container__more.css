@@ -1,0 +1,30 @@
+.card-container__more {
+  background: #FFFFFF;
+  border-radius: 80px;
+  width: 100%;
+  height: 56px;
+  border: none;
+  margin: 17px auto 0;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+}
+
+@media screen and (min-width: 768px) {
+  .card-container__more {
+    display: block;
+    margin-top: 30px;
+    width: 240px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card-container__more {
+    margin-top: 64px;
+    width: 288px;
+  }
+}

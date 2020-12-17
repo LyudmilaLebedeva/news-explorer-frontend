@@ -1,0 +1,7 @@
+@import url(__title/section__title.css);
+@import url(_backgroud/_blue/section_background_blue.css);
+@import url(__content/section__content.css);
+
+.section {
+  margin: 0 auto;
+}

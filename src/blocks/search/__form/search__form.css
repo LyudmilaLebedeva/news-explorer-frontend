@@ -1,0 +1,21 @@
+.search__form {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  padding: 0 16px;
+
+}
+
+@media screen and (min-width: 620px) {
+  .search__form {
+    max-width: 450px;
+    padding: 0;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .search__form {
+    max-width: 608px;
+  }
+}

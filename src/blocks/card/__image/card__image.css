@@ -1,0 +1,24 @@
+.card__image {
+  min-height: 196px;
+  padding: 16px 16px 47%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-image: url(../../../images/image_08.png);
+  background-size: cover;
+
+  text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+  .card__image {
+    min-height: 150px;
+    padding: 8px 8px 44%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card__image {
+    max-height: 272px;
+    padding: 24px 24px 51%;
+  }
+}

@@ -1,0 +1,13 @@
+.author__img {
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  display: block;
+  width: 272px;
+}
+
+@media screen and (min-width: 620px) {
+  .author__img {
+    width: 100%;
+    margin: auto;
+  }
+}
