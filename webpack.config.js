@@ -47,15 +47,15 @@ module.exports = {
           loader: 'file-loader',
           options: {
             esModule: false,
-            name: './images/[name].[ext]',
-            publicPath: '.',
+            name: 'images/[name].[ext]',
+            publicPath: './',
           },
         },
         {
           loader: 'image-webpack-loader',
           options: {
             esModule: false,
-            publicPath: '.',
+            publicPath: './',
           },
         },
       ],
