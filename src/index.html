@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
   <title>Webpack</title>
-  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css%>" />
+  <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>" />
 </head>
 
 <body class="body">
@@ -22,7 +22,7 @@
             <a class="header__menu-link" href="">Главная</a>
           </li>
           <li class="header__menu-item">
-            <a class="header__menu-link" href="">Сохранённые статьи</a>
+            <a class="header__menu-link" href="savednews/index.html">Сохранённые статьи</a>
           </li>
           <li class="header__menu-item">
             <button class="header__auth-button header__auth-button_color_white">
@@ -33,7 +33,7 @@
       </nav>
     </header>
 
-    <div class="popup">
+    <div class="popup" style="display: none;">
       <div class="popup__content">
         <button class="popup__close"></button>
         <form class="form">
