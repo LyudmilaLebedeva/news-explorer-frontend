@@ -74,7 +74,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './styles/[name].[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -93,7 +93,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/savednews/index.html',
-      filename: './savednews/index.html',
+      filename: 'savednews.html',
       chunks: ['savednews'],
     }),
   ],
