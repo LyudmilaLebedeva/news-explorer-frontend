@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -95,6 +96,9 @@ module.exports = {
       template: './src/savednews.html',
       filename: 'savednews.html',
       chunks: ['savednews'],
+    }),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
     }),
   ],
 };
