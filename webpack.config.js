@@ -8,8 +8,8 @@ const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: {
-    main: './src/index.js',
-    savednews: './src/savednews/index.js',
+    main: './src/scripts/index.js',
+    savednews: './src/scripts/savednews.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -48,7 +48,7 @@ module.exports = {
           options: {
             esModule: false,
             name: 'images/[name].[ext]',
-            publicPath: './',
+            publicPath: '../',
           },
         },
         {
@@ -66,7 +66,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: './fonts/[name].[ext]',
-          publicPath: '',
+          publicPath: '../',
         },
       },
     },
@@ -74,7 +74,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: 'styles/[name].[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -92,7 +92,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './src/savednews/index.html',
+      template: './src/savednews.html',
       filename: 'savednews.html',
       chunks: ['savednews'],
     }),
