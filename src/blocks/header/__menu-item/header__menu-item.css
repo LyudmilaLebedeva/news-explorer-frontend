@@ -1,3 +1,7 @@
+@import url(_underline/_black/header__menu-item_underline_black.css);
+@import url(_underline/_white/header__menu-item_underline_white.css);
+@import url(_unselected/_white/header__menu-item_unselected_white.css);
+
 .header__menu-item {
   display: flex;
   align-items: center;
@@ -15,11 +19,7 @@
     width: max-content;
     min-height: 66px;
     margin-right: 16px;
-
     font-size: 16px;
-
-    border-bottom: 3px solid white;
-    box-sizing: border-box;
   }
 
   .header__menu-item:last-of-type{
@@ -32,6 +32,5 @@
     margin-right: 34px;
     min-height: 80px;
     font-size: 18px;
-
   }
 }

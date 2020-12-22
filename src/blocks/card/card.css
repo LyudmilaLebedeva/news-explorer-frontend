@@ -5,11 +5,15 @@
 @import url(./__subtitle/card__subtitle.css);
 @import url(./__source/card__source.css);
 @import url(./__text/card__text.css);
+@import url(./__hint/card__hint.css);
+@import url(./__keyword/card__keyword.css);
 
 .card {
   width: 100%;
   background-color: white;
   margin: 0 auto 13px;
+  position: relative;
+  cursor: pointer;
 }
 
 .card:last-of-type {

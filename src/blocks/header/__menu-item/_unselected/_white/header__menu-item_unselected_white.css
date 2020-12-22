@@ -1,0 +1,7 @@
+.header__menu-item_unselected_white {
+  color: #B6BCBF;
+}
+
+.header__menu-item_unselected_white:hover {
+  color: white;
+}

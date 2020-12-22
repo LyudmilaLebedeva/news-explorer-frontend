@@ -1,5 +1,12 @@
+@import url(_type/_bookmark/card__btn_type_bookmark.css);
+@import url(_type/_delete/card__btn_type_delete.css);
+@import url(_type/_marked/card__btn_type_marked.css);
+
 .card__btn {
   width: 40px;
   height: 40px;
   border-radius: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
 }

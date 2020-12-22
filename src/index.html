@@ -18,10 +18,10 @@
       <nav class="header__menu-button"></nav>
       <nav class="header__menu">
         <ul class="header__menu-list">
-          <li class="header__menu-item">
+          <li class="header__menu-item header__menu-item_underline_white">
             <a class="header__menu-link" href="">Главная</a>
           </li>
-          <li class="header__menu-item">
+          <li class="header__menu-item header__menu-item_unselected_white">
             <a class="header__menu-link" href="savednews.html">Сохранённые статьи</a>
           </li>
           <li class="header__menu-item">
@@ -33,18 +33,19 @@
       </nav>
     </header>
 
-    <div class="popup" style="display: none;">
+    <div class="popup" >
       <div class="popup__content">
         <button class="popup__close"></button>
         <form class="form">
           <h2 class="form__title">Вход</h2>
           <label for="email" class="form__label">E-mail</label>
-          <input id="email" type="email" required name="email" class="form__input" placeholder="Введите e-mail">
-          <div id="email-error" class="form__error"></div>
+          <input id="email" required type="email" required name="email" class="form__input" placeholder="Введите e-mail">
+          <p id="email-error" class="form__input-error"></p>
           <label for="password" class="form__label">Пароль</label>
-          <input id="password" type="password" required name="password" class="form__input"
+          <input id="password" required type="password" required name="password" class="form__input"
             placeholder="Введите пароль">
-          <div id="password-error" class="form__message"></div>
+          <p id="password-error" class="form__input-error"></p>
+          <p id="password-error" class="form__error">Такой пользователь уже есть</p>
           <input type="submit" class="form__submit" value="Войти">
           <p class="form__signin">или <button class="form__signin-link">Зарегистрироваться</button> </p>
         </form>
@@ -71,7 +72,7 @@
       <div class="card-container">
         <article class="card">
           <div class="card__image">
-            <button class="card__btn"></button>
+            <button class="card__btn card__btn_type_bookmark"></button>
           </div>
           <div class="card__text">
             <time class="card__date">2 августа, 2019</time>
@@ -86,30 +87,31 @@
         </article>
         <article class="card">
           <div class="card__image">
-            <button class="card__btn"></button>
+            <button class="card__btn card__btn_type_marked"></button>
           </div>
           <div class="card__text">
             <time class="card__date">2 августа, 2019</time>
-            <h3 class="card__title">Национальное достояние – парки</h3>
+            <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
             <p class="card__subtitle">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь
-              начала складываться система национальных парков...
+              Фотограф отвлеклась от освещения суровой политической реальности Мексики,
+              чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
             </p>
-            <cite class="card__source">Лента.ру</cite>
+            <cite class="card__source">Медуза</cite>
           </div>
         </article>
         <article class="card">
           <div class="card__image">
-            <button class="card__btn"></button>
+            <button class="card__btn card__btn_type_bookmark"></button>
+            <p class="card__hint">Войдите, чтобы сохранять статьи</p>
           </div>
           <div class="card__text">
             <time class="card__date">2 августа, 2019</time>
-            <h3 class="card__title">Национальное достояние – парки</h3>
+            <h3 class="card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
             <p class="card__subtitle">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь
-              начала складываться система национальных парков...
+              Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о
+              необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...
             </p>
-            <cite class="card__source">Лента.ру</cite>
+            <cite class="card__source">РИА</cite>
           </div>
         </article>
       </div>
@@ -146,10 +148,10 @@
       </ul>
       <ul class="footer__social">
         <li class="footer__social-item">
-          <a href="" class="footer__social-link"></a>
+          <a href="" class="footer__social-link footer__social-link_site_github"></a>
         </li>
         <li class="footer__social-item">
-          <a href="" class="footer__social-link"></a>
+          <a href="" class="footer__social-link footer__social-link_site_fb"></a>
         </li>
       </ul>
     </div>

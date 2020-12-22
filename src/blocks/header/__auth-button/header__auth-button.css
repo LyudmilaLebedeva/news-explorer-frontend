@@ -17,6 +17,8 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+
+  cursor: pointer;
 }
 
 @media screen and (min-width: 620px) {

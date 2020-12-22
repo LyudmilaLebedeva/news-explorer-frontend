@@ -29,5 +29,7 @@
     flex-direction: row-reverse;
     justify-content: space-between;
     padding: 30px 104px;
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }

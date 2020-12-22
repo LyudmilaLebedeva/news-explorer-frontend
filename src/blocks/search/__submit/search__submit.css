@@ -12,6 +12,15 @@
   font-size: 18px;
   line-height: 24px;
   color: white;
+  cursor: pointer;
+}
+
+.search__submit:hover {
+  background-color: #347EFF;
+}
+
+.search__submit:active {
+  background-color: #2A65CC;
 }
 
 @media screen and (min-width: 620px) {
