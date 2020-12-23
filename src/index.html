@@ -33,24 +33,7 @@
       </nav>
     </header>
 
-    <div class="popup" >
-      <div class="popup__content">
-        <button class="popup__close"></button>
-        <form class="form">
-          <h2 class="form__title">Вход</h2>
-          <label for="email" class="form__label">E-mail</label>
-          <input id="email" required type="email" required name="email" class="form__input" placeholder="Введите e-mail">
-          <p id="email-error" class="form__input-error"></p>
-          <label for="password" class="form__label">Пароль</label>
-          <input id="password" required type="password" required name="password" class="form__input"
-            placeholder="Введите пароль">
-          <p id="password-error" class="form__input-error"></p>
-          <p id="password-error" class="form__error">Такой пользователь уже есть</p>
-          <input type="submit" class="form__submit" value="Войти">
-          <p class="form__signin">или <button class="form__signin-link">Зарегистрироваться</button> </p>
-        </form>
-      </div>
-    </div>
+
 
     <div class="search__text">
       <h2 class="search__title">Что творится в мире?</h2>
@@ -60,7 +43,7 @@
       </p>
     </div>
     <form action="" class="search__form">
-      <input type="text" placeholder="Политика" class="search__input" />
+      <input type="text" required placeholder="Введите тему новости" class="search__input" />
       <input type="submit" value="Искать" class="search__submit" />
     </form>
   </section>
@@ -157,6 +140,63 @@
     </div>
     <h4 class="footer__copyright">© 2020 Supersite, Powered by News API</h4>
   </footer>
+
+  <!-- <div class="popup" >
+    <div class="popup__content">
+      <button class="popup__close"></button>
+      <form class="form">
+        <h2 class="form__title">Вход</h2>
+        <label for="email" class="form__label">E-mail</label>
+        <input id="email" required type="email" required name="email" class="form__input" placeholder="Введите e-mail">
+        <p id="email-error" class="form__input-error">Неправильный формат email</p>
+        <label for="password" class="form__label">Пароль</label>
+        <input id="password" required type="password" required name="password" class="form__input"
+          placeholder="Введите пароль">
+        <p id="password-error" class="form__input-error"></p>
+        <p id="form-error" class="form__error">Такой пользователь уже есть</p>
+        <input type="submit" disabled class="form__submit" value="Войти">
+        <p class="form__or">или <button class="form__link">Зарегистрироваться</button> </p>
+      </form>
+    </div>
+  </div> -->
+
+  <!-- <div class="popup" >
+    <div class="popup__content">
+      <button class="popup__close"></button>
+      <form class="form">
+        <h2 class="form__title">Вход</h2>
+
+        <label for="email" class="form__label">E-mail</label>
+        <input id="email" required  type="email" name="email" class="form__input" placeholder="Введите e-mail">
+        <p id="email-error" class="form__input-error">Неправильный формат email</p>
+
+        <label for="password" class="form__label">Пароль</label>
+        <input id="password" required minlength="8" type="password" required name="password" class="form__input"
+          placeholder="Введите пароль">
+        <p id="password-error" class="form__input-error"></p>
+
+        <label for="name" class="form__label">Имя</label>
+        <input id="name" required minlength="2" maxlength="30" type="text"
+          name="name" class="form__input"
+          placeholder="Введите своё имя">
+        <p id="name-error" class="form__input-error"></p>
+
+        <p id="form-error" class="form__error">Такой пользователь уже есть</p>
+        <input type="submit" disabled class="form__submit" value="Зарегистрироваться">
+        <p class="form__or">или <button class="form__link">Войти</button> </p>
+      </form>
+    </div>
+  </div> -->
+
+  <!-- <div class="popup" >
+    <div class="popup__content">
+      <button class="popup__close"></button>
+      <div class="message">
+        <h2 class="message__title">Пользователь успешно зарегистрирован!</h2>
+        <button class="message__link">Войти</button>
+      </div>
+    </div>
+  </div> -->
 
   <script src="<%=htmlWebpackPlugin.files.js%>"></script>
 </body>

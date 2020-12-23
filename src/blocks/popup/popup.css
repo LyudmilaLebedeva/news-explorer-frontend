@@ -3,23 +3,25 @@
 
 .popup {
   position: fixed;
+  top: 0%;
   width: 100vw;
   min-height: 100vh;
 
-  display: none;
+  /* display: none; */
   z-index: 4;
+  background-color: rgba(0,0,0, .7);
 }
 
-@media screen and (max-width: 619px) {
+@media screen and (max-width: 767px) {
   .popup {
-    top: 56px;
+    padding-top: 56px;
   }
 
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 768px) {
   .popup {
-    top: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;

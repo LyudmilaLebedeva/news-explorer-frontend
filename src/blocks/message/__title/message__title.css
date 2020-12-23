@@ -1,4 +1,4 @@
-.form__title {
+.message__title {
   font-weight: 900;
   font-size: 24px;
   line-height: 28px;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .form__title {
+  .message__title {
     margin-bottom: 18px;
   }
 }

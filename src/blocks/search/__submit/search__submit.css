@@ -23,7 +23,7 @@
   background-color: #2A65CC;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 768px) {
   .search__submit {
     margin-top: 0;
 

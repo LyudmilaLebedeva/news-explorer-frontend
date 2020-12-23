@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 768px) {
   .header__auth-button {
     margin: 0;
     padding: 8px 15px;

@@ -10,6 +10,7 @@
 @import url(../blocks/saved/saved.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/form/form.css);
+@import url(../blocks/message/message.css);
 
 * {
   margin: 0;

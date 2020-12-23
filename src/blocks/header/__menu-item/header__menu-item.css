@@ -14,7 +14,7 @@
   line-height: 24px;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 768px) {
   .header__menu-item {
     width: max-content;
     min-height: 66px;

@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-@media screen and (min-width: 620px) {
+@media screen and (min-width: 768px) {
   .search__text {
 
     padding: 40px 16px 47px;
