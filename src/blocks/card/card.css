@@ -14,6 +14,7 @@
   margin: 0 auto 13px;
   position: relative;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 .card:last-of-type {

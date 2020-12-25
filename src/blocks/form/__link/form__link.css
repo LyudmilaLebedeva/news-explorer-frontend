@@ -3,4 +3,17 @@
   border: none;
   background: none;
   letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.form__link:focus {
+  outline: solid #1A1B22 2px;
+}
+
+.form__link:hover {
+  color: #347EFF;
+}
+
+.form__link:active {
+  color: #2A65CC;
 }

@@ -9,12 +9,17 @@
   height: 40px;
   background-size: contain;
   border: none;
+  cursor: pointer;
+}
+
+.popup__close:focus {
+  outline: solid #1A1B22 2px;
 }
 
 @media screen and (max-width: 767px) {
   .popup__close {
     width: 24px;
-  height: 24px;
+    height: 24px;
     right: 16px;
     top: -40px;
   }

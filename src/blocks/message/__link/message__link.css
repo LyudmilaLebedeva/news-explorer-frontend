@@ -4,4 +4,9 @@
   border: none;
   background: none;
   letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.message__link:focus {
+  outline: solid #1A1B22 2px;
 }

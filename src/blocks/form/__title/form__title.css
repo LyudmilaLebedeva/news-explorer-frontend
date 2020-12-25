@@ -4,6 +4,7 @@
   line-height: 28px;
   color: #000;
   margin-bottom: 22px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 
 @media screen and (max-width: 767px) {

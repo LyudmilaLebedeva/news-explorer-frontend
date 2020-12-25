@@ -6,18 +6,17 @@
 
 @import url(__menu-link/header__menu-link.css);
 @import url(__auth-button/header__auth-button.css);
-
 @import url(__logout-img/header__logout-img.css);
 @import url(_color/_black/header_color_black.css);
 @import url(_color/_white/header_color_white.css);
 
 .header {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  z-index: 2;
-  position: relative;
+  z-index: 3;
 }
 
 @media screen and (min-width: 768px) {
