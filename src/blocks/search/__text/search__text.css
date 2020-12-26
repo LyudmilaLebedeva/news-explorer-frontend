@@ -1,6 +1,7 @@
 .search__text {
   max-width: 479px;
   padding: 30px 16px 122px;
+  box-sizing: border-box;
   margin: 0 auto;
 }
 

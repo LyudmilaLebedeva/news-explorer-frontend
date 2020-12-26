@@ -1,6 +1,7 @@
 .card__image {
   min-height: 196px;
   padding: 16px 16px 47%;
+  box-sizing: border-box;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-image: url(../../../images/image_08.png);
@@ -10,7 +11,6 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   position: relative;
-  overflow: visible;
 }
 
 @media screen and (min-width: 768px) {

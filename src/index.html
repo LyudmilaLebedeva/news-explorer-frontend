@@ -4,8 +4,11 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
-  <title>Webpack</title>
   <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>" />
+  <link rel="icon" href="./images/N.svg" type="image/ico">
+  <meta name="description" content="Сервис для поиска и сохранения новостей">
+  <meta name="author" content="Людмила Лебедева">
+  <title>NewsExplorer</title>
 </head>
 
 <body class="body">
@@ -126,17 +129,19 @@
       </ul>
       <ul class="footer__social">
         <li class="footer__social-item">
-          <a href="https://github.com/LyudmilaLebedeva" target="blank" class="footer__social-link footer__social-link_site_github"></a>
+          <a href="https://github.com/LyudmilaLebedeva" target="blank"
+            class="footer__social-link footer__social-link_site_github"></a>
         </li>
         <li class="footer__social-item">
-          <a href="https://ru-ru.facebook.com/" target="blank"  class="footer__social-link footer__social-link_site_fb"></a>
+          <a href="https://ru-ru.facebook.com/" target="blank"
+            class="footer__social-link footer__social-link_site_fb"></a>
         </li>
       </ul>
     </div>
     <h4 class="footer__copyright">© 2020 Supersite, Powered by News API</h4>
   </footer>
 
-   <!-- style = "display: none" -->
+  <!-- style = "display: none" -->
 
   <div class="popup" style = "display: none">
     <div class="popup__content">
@@ -160,14 +165,14 @@
     </div>
   </div>
 
-  <div class="popup" style = "display: none">
-    <div class="popup__content" >
+  <div class="popup" style="display: none">
+    <div class="popup__content">
       <button class="popup__close"></button>
       <form class="form">
         <h2 class="form__title">Вход</h2>
 
         <label for="email" class="form__label">E-mail</label>
-        <input id="email" required  type="email" name="email" class="form__input" placeholder="Введите e-mail">
+        <input id="email" required type="email" name="email" class="form__input" placeholder="Введите e-mail">
         <p id="email-error" class="form__input-error">Неправильный формат email</p>
 
         <label for="password" class="form__label">Пароль</label>
@@ -176,8 +181,7 @@
         <p id="password-error" class="form__input-error"></p>
 
         <label for="name" class="form__label">Имя</label>
-        <input id="name" required minlength="2" maxlength="30" type="text"
-          name="name" class="form__input"
+        <input id="name" required minlength="2" maxlength="30" type="text" name="name" class="form__input"
           placeholder="Введите своё имя">
         <p id="name-error" class="form__input-error"></p>
 
@@ -188,7 +192,7 @@
     </div>
   </div>
 
-  <div class="popup"  style = "display: none">
+  <div class="popup" style="display: none">
     <div class="popup__content">
       <button class="popup__close"></button>
       <div class="message">

@@ -11,10 +11,3 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/message/message.css);
-
-* {
-  margin: 0;
-  padding: 0;
-  /* border: solid orangered 1px; */
-  box-sizing: border-box;
-}
