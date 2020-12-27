@@ -10,6 +10,7 @@
   background-size: contain;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .popup__close:focus {

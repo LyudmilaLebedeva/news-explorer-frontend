@@ -4,6 +4,7 @@
   background: none;
   letter-spacing: 1px;
   cursor: pointer;
+  padding: 0;
 }
 
 .form__link:focus {

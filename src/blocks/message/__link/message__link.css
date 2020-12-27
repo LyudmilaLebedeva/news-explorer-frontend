@@ -1,10 +1,12 @@
 .message__link {
-  font-weight: 18px;
+  font-size: 18px;
   color: #2F71E5;
   border: none;
   background: none;
   letter-spacing: 1px;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 .message__link:focus {
