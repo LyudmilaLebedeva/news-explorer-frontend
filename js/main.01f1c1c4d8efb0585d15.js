@@ -1,0 +1,1 @@
+(()=>{var e={16:e=>{e.exports="/home/lyuda/yandex/news-explorer-frontend/dist/images/logout.svg"},181:e=>{e.exports="/home/lyuda/yandex/news-explorer-frontend/dist/images/logout_black.svg"}},r={};function o(t){if(r[t])return r[t].exports;var s=r[t]={exports:{}};return e[t](s,s.exports,o),s.exports}(()=>{"use strict";o(16),o(181)})()})();
