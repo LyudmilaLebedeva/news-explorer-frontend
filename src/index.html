@@ -119,7 +119,10 @@
   <section class="section">
     <div class="section__content">
       <div class="author">
-        <img src="./images/image-03.png" alt="Автор" class="author__img" />
+        <picture >
+          <source srcset="./images/image-03-mini.jpg" media="(max-width: 767px)">
+          <img class="author__img" src="./images/image-03.jpg" alt="Автор"/>
+        </picture>
         <div class="author__text">
           <h2 class="section__title">Об авторе</h2>
           <p class="author__pharagraph">
