@@ -101,7 +101,7 @@
   </section>
   <section class="section">
     <div class="section__content">
-      <article class="author">
+      <div class="author">
         <img src="./images/image-03.png" alt="Автор" class="author__img" />
         <div class="author__text">
           <h2 class="section__title">Об авторе</h2>
@@ -115,7 +115,7 @@
           </p>
         </div>
     </div>
-    </article>
+  </div>
   </section>
   <footer class="footer">
     <div class="footer__links-group">
@@ -149,12 +149,12 @@
       <form class="form">
         <h2 class="form__title">Вход</h2>
 
-        <label for="email" class="form__label">E-mail</label>
-        <input required type="email" name="email" class="form__input" placeholder="Введите e-mail">
+        <label for="signin-email" class="form__label">E-mail</label>
+        <input id="signin-email" required type="email" name="email" class="form__input" placeholder="Введите e-mail">
         <p class="form__input-error">Неправильный формат email</p>
 
-        <label for="password" class="form__label">Пароль</label>
-        <input required minlength="8" type="password" name="password" class="form__input"
+        <label for="signin-password" class="form__label">Пароль</label>
+        <input id="signin-password" required minlength="8" type="password" name="password" class="form__input"
           placeholder="Введите пароль">
         <p class="form__input-error"></p>
 
@@ -169,19 +169,19 @@
     <div class="popup__content">
       <button class="popup__close"></button>
       <form class="form">
-        <h2 class="form__title">Вход</h2>
+        <h2 class="form__title">Регистрация</h2>
 
-        <label for="email" class="form__label">E-mail</label>
-        <input required type="email" name="email" class="form__input" placeholder="Введите e-mail">
+        <label for="signup-email" class="form__label">E-mail</label>
+        <input id="signup-email" required type="email" name="email" class="form__input" placeholder="Введите e-mail">
         <p class="form__input-error">Неправильный формат email</p>
 
-        <label for="password" class="form__label">Пароль</label>
-        <input required minlength="8" type="password" name="password" class="form__input"
+        <label for="signup-password" class="form__label">Пароль</label>
+        <input id="signup-password" required minlength="8" type="password" name="password" class="form__input"
           placeholder="Введите пароль">
         <p class="form__input-error"></p>
 
-        <label for="name" class="form__label">Имя</label>
-        <input required minlength="2" maxlength="30" type="text" name="name" class="form__input"
+        <label for="signup-name" class="form__label">Имя</label>
+        <input id="signup-name" required minlength="2" maxlength="30" type="text" name="name" class="form__input"
           placeholder="Введите своё имя">
         <p class="form__input-error"></p>
 
