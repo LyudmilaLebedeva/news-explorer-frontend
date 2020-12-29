@@ -4,7 +4,7 @@
   right: -46px;
   background-image: url(../../../images/close_btn.svg);
   background-color: unset;
-  z-index: 5;
+  z-index: 6;
   width: 40px;
   height: 40px;
   background-size: contain;
