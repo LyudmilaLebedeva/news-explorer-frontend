@@ -7,11 +7,13 @@
 @import url(__menu-link/header__menu-link.css);
 @import url(__auth-button/header__auth-button.css);
 @import url(__logout-img/header__logout-img.css);
-@import url(_color/_black/header_color_black.css);
-@import url(_color/_white/header_color_white.css);
+@import url(_theme/_white/header_theme_white.css);
+@import url(_theme/_transparent/header_theme_transparent.css);
+@import url(_theme/_black/header_theme_black.css);
+@import url(_position/_fixed/header_position_fixed.css);
+@import url(_position/_relative/header_position_relative.css);
 
 .header {
-  position: relative;
   width: 100%;
   display: flex;
   justify-content: space-between;
