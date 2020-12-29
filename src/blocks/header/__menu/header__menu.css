@@ -3,7 +3,7 @@
 @media screen and (max-width: 767px) {
   .header__menu {
     position: absolute;
-    top: 56px;
+    top: 58px;
     left: 0;
     width: 100%;
     min-height: 100vh;
