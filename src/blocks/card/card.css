@@ -1,4 +1,3 @@
-@import url(./__image/card__image.css);
 @import url(./__btn/card__btn.css);
 @import url(./__date/card__date.css);
 @import url(./__title/card__title.css);
@@ -7,17 +6,18 @@
 @import url(./__text/card__text.css);
 @import url(./__hint/card__hint.css);
 @import url(./__keyword/card__keyword.css);
+@import url(./__img/card__img.css);
 
 .card {
   width: 100%;
   background-color: white;
-  margin: 0 auto 13px;
+  margin: 0 auto;
   position: relative;
   cursor: pointer;
   border-radius: 15px;
 }
 
-.card:last-of-type {
+/* .card:last-of-type {
   margin-bottom: 0;
 }
 
@@ -25,4 +25,4 @@
   .card {
     margin-bottom: 0;
   }
-}
+} */

@@ -1,25 +1,28 @@
+@import url(./_type/_delete/card__hint_type_delete.css);
+@import url(./_type/_mark/card__hint_type_mark.css);
+
 .card__hint {
   width: max-content;
   margin: 0;
   position: absolute;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
   border-radius: 10px;
   box-sizing: border-box;
 
   font-weight: 500;
 
-
   color: #000000;
 
   right: 61px;
   top: 16px;
 
-  font-size: 14px;
-  line-height: 24px;
-  padding: 8px 15px;
+
   height: 40px;
+  padding: 14px;
+
   display: none;
+
 }
 
 @media screen and (min-width: 768px) {
@@ -33,9 +36,7 @@
   .card__hint {
     right: 69px;
     top: 24px;
-    font-size: 10px;
-    line-height: 12px;
-    padding: 14px;
+
     display: block;
   }
 }
