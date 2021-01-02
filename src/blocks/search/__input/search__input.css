@@ -7,7 +7,7 @@
 
   border: 1px solid #D1D2D6;
   caret-color: rgba(47, 113, 229, 1);
-
+  background: white;
 
   border-radius: 100px;
 
@@ -20,8 +20,7 @@
 }
 
 .search__input:focus {
-  outline: none;
-  border: 3px solid gold;
+  outline: black solid 2px ;
 }
 
 .search__input::placeholder {
