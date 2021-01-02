@@ -15,6 +15,10 @@
   cursor: pointer;
 }
 
+.search__submit:focus {
+  outline: solid #1A1B22 2px;
+}
+
 .search__submit:hover {
   background-color: #347EFF;
 }
