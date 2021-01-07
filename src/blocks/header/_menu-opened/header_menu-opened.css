@@ -6,4 +6,12 @@
     box-shadow: unset;
     position: fixed;
   }
+
+  .header_menu-opened .header__menu {
+    display: block;
+  }
+
+  .header_menu-opened .header__menu-button {
+    background: url(../../../images/close_btn.svg);
+  }
 }
