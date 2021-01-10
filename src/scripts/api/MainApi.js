@@ -10,15 +10,14 @@ class MainApi {
       body: JSON.stringify(body),
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+        if (res.ok) return res.json();
+        throw new Error(res.status);
+      })
+      .catch((err) => { throw err; });
   }
 
   signup(body) {
-    return this._fetchMask('/signup', 'POST', body);
+    this._fetchMask('/signup', 'POST', body);
   }
 
   signin(body) {
@@ -27,6 +26,14 @@ class MainApi {
 
   getUserData() {
     return this._fetchMask('/users/me');
+  }
+
+  setToken(token) {
+    this.options.headers.authorization = `Bearer ${token}`;
+  }
+
+  clearToken() {
+    this.options.headers.authorization = '';
   }
 }
 

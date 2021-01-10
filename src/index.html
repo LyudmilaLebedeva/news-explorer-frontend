@@ -13,10 +13,10 @@
 
 <body class="body">
   <section class="search">
-    <header class="header header_theme_transparent">
+    <header class="header header_theme_transparent header_menu-opened">
       <h1 class="header__title">NewsExplorer</h1>
       <button class="header__menu-button header__menu-button_type_open-white"></button>
-      <nav class="header__menu header__menu_closed">
+      <nav class="header__menu">
         <ul class="header__menu-list">
           <li class="header__menu-item header__menu-item_underline_white">
             <a class="header__menu-link" href="./index.html">Главная</a>
@@ -26,7 +26,8 @@
           </li>
           <li class="header__menu-item">
             <button class="header__auth-button header__auth-button_color_white">
-              Грета<img src="./images/logout.svg" alt="Выйти" class="header__logout-img" />
+
+              <img src="./images/logout.svg" alt="Выйти" class="header__logout-img" />
             </button>
           </li>
         </ul>
@@ -171,51 +172,14 @@
   <div class="popup hidden">
     <div class="popup__content">
       <button class="popup__close"></button>
-      <form class="form">
-        <h2 class="form__title">Вход</h2>
 
-        <label for="signin-email" class="form__label">E-mail</label>
-        <input id="signin-email" required type="email" name="email" class="form__input" placeholder="Введите e-mail" />
-        <p class="form__input-error">Неправильный формат email</p>
-
-        <label for="signin-password" class="form__label">Пароль</label>
-        <input id="signin-password" required minlength="8" type="password" name="password" class="form__input"
-          placeholder="Введите пароль" />
-        <p class="form__input-error"></p>
-
-        <p class="form__error">Такой пользователь уже есть</p>
-        <input type="submit" disabled class="form__submit" value="Войти" />
-        <p class="form__or">
-          или <button class="form__link">Зарегистрироваться</button>
-        </p>
-      </form>
     </div>
   </div>
 
   <div class="popup hidden">
     <div class="popup__content">
       <button class="popup__close"></button>
-      <form class="form">
-        <h2 class="form__title">Регистрация</h2>
 
-        <label for="signup-email" class="form__label">E-mail</label>
-        <input id="signup-email" required type="email" name="email" class="form__input" placeholder="Введите e-mail" />
-        <p class="form__input-error">Неправильный формат email</p>
-
-        <label for="signup-password" class="form__label">Пароль</label>
-        <input id="signup-password" required minlength="8" type="password" name="password" class="form__input"
-          placeholder="Введите пароль" />
-        <p class="form__input-error"></p>
-
-        <label for="signup-name" class="form__label">Имя</label>
-        <input id="signup-name" required minlength="2" maxlength="30" type="text" name="name" class="form__input"
-          placeholder="Введите своё имя" />
-        <p class="form__input-error"></p>
-
-        <p class="form__error">Такой пользователь уже есть</p>
-        <input type="submit" class="form__submit" value="Зарегистрироваться" />
-        <p class="form__or">или <button class="form__link">Войти</button></p>
-      </form>
     </div>
   </div>
 

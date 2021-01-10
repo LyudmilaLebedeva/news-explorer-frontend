@@ -1,20 +1,38 @@
 import BaseComponent from './BaseComponent';
 
 class Header extends BaseComponent {
-  constructor(handlers, options, menuOpenedClasses, menuClosedClasses) {
+  constructor(elements, authForm, handlers) {
     super(handlers);
-    this.options = options;
     this.elements = elements;
-    this.isMenuOpend = false;
+    this.authForm = authForm;
+
+    this.authForm.successFunc = (name) => {
+      this.render({ isLoggedIn: true, userName: name });
+    };
+
+    this.loginHandler = () => {
+      this.authForm.open();
+    };
+
+    this.logoutHandler = () => {
+      // eslint-disable-next-line no-undef
+      localStorage.removeItem('token');
+      this.render({ isLoggedIn: false });
+    };
   }
+
   render(props) {
-
-  }
-  openMenu() {
-
-  }
-  closeMenu() {
-
+    if (props.isLoggedIn) {
+      this.elements.authButton.removeEventListener('click', this.loginHandler);
+      this.elements.authButton.textContent = props.userName;
+      this.elements.authButton.addEventListener('click', this.logoutHandler);
+      this.elements.savedLink.classList.remove('hidden');
+    } else {
+      this.elements.authButton.removeEventListener('click', this.logoutHandler);
+      this.elements.authButton.textContent = 'Авторизоваться';
+      this.elements.authButton.addEventListener('click', this.loginHandler);
+      this.elements.savedLink.classList.add('hidden');
+    }
   }
 }
 

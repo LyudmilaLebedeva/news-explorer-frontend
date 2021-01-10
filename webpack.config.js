@@ -29,7 +29,7 @@ module.exports = {
           : {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '',
+              publicPath: '../../',
             },
           },
         {
@@ -49,7 +49,7 @@ module.exports = {
           options: {
             esModule: false,
             name: 'images/[name].[ext]',
-            publicPath: '../',
+            publicPath: './',
           },
         },
         {

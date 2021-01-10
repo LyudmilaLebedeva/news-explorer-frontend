@@ -37,3 +37,12 @@
     padding: 12px 19px;
   }
 }
+
+.header__auth-button::after {
+  content: '';
+  background-image: url(../../../images/logout.svg);
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-position: center;
+}

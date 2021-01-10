@@ -1,5 +1,47 @@
 import '../pages/index.css';
 import MainApi from './api/MainApi';
+import Header from './components/Header';
+import Popup from './components/Popup';
+import Form from './components/Form';
+
+import authFormLayot from './templates/authFormLayot';
+import regFormLayot from './templates/regFormLayot';
+
+const template = document.createElement('div');
+template.insertAdjacentHTML('beforeend', authFormLayot);
+const formTemplate = template.firstElementChild;
+
+const regTemplate = document.createElement('div');
+regTemplate.insertAdjacentHTML('beforeend', regFormLayot);
+const regFormTemplate = template.firstElementChild;
+
+const MAIN_API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://nomoreparties.co'
+  : 'http://localhost:3000';
+
+const headerElement = document.querySelector('.header');
+const authButton = headerElement.querySelector('.header__auth-button');
+const logOutButton = headerElement.querySelector('.header__logout-img');
+const savedLink = headerElement.querySelector('.header__menu-item_unselected_white');
+
+const popupElement = document.querySelector('.popup');
+const closeButton = popupElement.querySelector('.popup__close');
+
+const headerElements = { authButton, logOutButton, savedLink };
+
+const mainApi = new MainApi({
+  baseUrl: MAIN_API_URL,
+  headers: { 'Content-Type': 'application/json' },
+});
+
+const popup = new Popup(popupElement, closeButton);
+const authForm = new Form(formTemplate, mainApi, popup);
+const header = new Header(headerElements, authForm);
+
+mainApi.setToken(localStorage.getItem('token'));
+mainApi.getUserData()
+  .then((res) => header.render({ userName: res.name, isLoggedIn: true }))
+  .catch(() => header.render({ isLoggedIn: false }));
 
 require('../images/image-03.jpg');
 require('../images/image-03-mini.jpg');
@@ -12,31 +54,3 @@ require('../images/image_05.jpg');
 require('../images/image_07.jpg');
 require('../images/image_06.jpg');
 require('../images/N.svg');
-
-const MAIN_API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://nomoreparties.co'
-  : 'http://localhost:3000';
-
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmY1Njg3YWZmZmZlOTE1YTY4ZjlkYjYiLCJpYXQiOjE2MDk5MjIyNDQsImV4cCI6MTYxMDUyNzA0NH0.rXWtAgQOKSqZGISJc1DzKsotME-On0QimNwKleZGTro'
-
-const mainApi = new MainApi({
-  baseUrl: MAIN_API_URL,
-  headers: {
-    authorization: `Bearer ${token}`,
-    'Content-Type': 'application/json',
-  },
-});
-
-// api.signup({
-//   name: 'volodya',
-//   email: 'volodya@mail.ru',
-//   password: '12345678',
-// });
-
-// api.signin({
-//   email: 'volodya@mail.ru',
-//   password: '12345678',
-// })
-//   .then((res) => console.log(res));
-
-// api.getUserData().then((res) => console.log(res));

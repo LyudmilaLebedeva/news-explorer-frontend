@@ -5,7 +5,7 @@ class BaseComponent {
   }
 
   _setHandlers() {
-    console.log(this.handlers);
+    
   }
 }
 
