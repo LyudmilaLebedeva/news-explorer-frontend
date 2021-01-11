@@ -2,7 +2,7 @@ class Popup {
   constructor(popupElement, closeButton) {
     this.popupElement = popupElement;
     this.closeButton = closeButton;
-    this.container = this.popupElement.querySelector('.popup__content');
+    this.container = popupElement.querySelector('.popup__content');
 
     this.closeHandler = () => {
       this.clearContent();

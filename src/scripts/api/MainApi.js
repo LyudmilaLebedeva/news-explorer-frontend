@@ -17,7 +17,7 @@ class MainApi {
   }
 
   signup(body) {
-    this._fetchMask('/signup', 'POST', body);
+    return this._fetchMask('/signup', 'POST', body);
   }
 
   signin(body) {

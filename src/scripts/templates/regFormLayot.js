@@ -1,5 +1,5 @@
 const regFormLayot = `
-<form class="form" style="display: none;">
+<form class="form">
     <h2 class="form__title">Регистрация</h2>
 
     <label for="email" class="form__label">E-mail</label>

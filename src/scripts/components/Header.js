@@ -6,10 +6,6 @@ class Header extends BaseComponent {
     this.elements = elements;
     this.authForm = authForm;
 
-    this.authForm.successFunc = (name) => {
-      this.render({ isLoggedIn: true, userName: name });
-    };
-
     this.loginHandler = () => {
       this.authForm.open();
     };

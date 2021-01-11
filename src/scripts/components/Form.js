@@ -1,9 +1,22 @@
 class Form {
-  constructor(formElement, api, popup) {
+  constructor(formElement, apiFunc, successFunc, popup) {
     this.formElement = formElement;
-    this.api = api;
     this.popup = popup;
     this._getInputs();
+
+    this._submit = (event) => {
+      event.preventDefault();
+      apiFunc(this._getInfo())
+        .then(() => this.close())
+        .then((res) => {
+          successFunc(res);
+        })
+        .catch((err) => {
+          if (err.message === '401') {
+            this.setServerError('Неправильное имя пользователя или пароль');
+          } else this.setServerError(err.message);
+        });
+    };
   }
 
   _getInputs() {
@@ -32,40 +45,15 @@ class Form {
   }
 
   open() {
-    this.formElement.addEventListener('submit', this.submit.bind(this));
+    this.formElement.addEventListener('submit', this._submit);
     this.popup.setContent(this.formElement);
     this.popup.open();
   }
 
   close() {
-    const thisForm = this;
-    this.formElement.removeEventListener('submit', thisForm);
+    this.formElement.removeEventListener('submit', this._submit);
     this.popup.clearContent();
     this.popup.close();
-  }
-
-  submit(event) {
-    event.preventDefault();
-    const thisForm = this;
-    this.api.signin(this._getInfo())
-      .then((res) => {
-        thisForm.api.setToken(res.token);
-        // eslint-disable-next-line no-undef
-        localStorage.setItem('token', res.token);
-        thisForm.api.setToken(res.token);
-        return thisForm.api.getUserData();
-      })
-      .then((res) => {
-        thisForm.successFunc(res.name);
-      })
-      .then(() => {
-        thisForm.close();
-      })
-      .catch((err) => {
-        if (err.message === '401') {
-          this.setServerError('Неправильное имя пользователя или пароль');
-        } else this.setServerError(err.message);
-      });
   }
 }
 
