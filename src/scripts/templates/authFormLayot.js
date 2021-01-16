@@ -14,7 +14,7 @@ const authFormLayot = `
     <p class="form__error"></p>
     <input type="submit" class="form__submit" value="Войти" />
     <p class="form__or">
-      или <button class="form__link">Зарегистрироваться</button>
+      или <span class="form__link">Зарегистрироваться</span>
     </p>
   </form>
 `;

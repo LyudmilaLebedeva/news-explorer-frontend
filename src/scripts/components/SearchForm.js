@@ -3,12 +3,25 @@ import BaseForm from './BaseForm';
 class SearchForm extends BaseForm {
   constructor(formElement, cardList, newsApi) {
     const submitFunc = (obj) => {
+      this.keyword = obj.keyword;
       cardList.renderLoader();
-      return newsApi.getNews(obj.keyword);
+      return newsApi.getNews(this.keyword);
     };
 
     const successFunc = (res) => {
-      cardList.renderResults(res.articles);
+      const { keyword } = this;
+      console.log(keyword);
+      const cardsData = res.articles.map((article) => ({
+        keyword,
+        title: article.title,
+        text: article.description,
+        date: article.publishedAt,
+        source: article.source.name,
+        link: 'http://sdfsfsd.df',
+        image: article.urlToImage,
+      }));
+
+      cardList.renderResults(cardsData);
     };
 
     const errorFunc = (err) => {

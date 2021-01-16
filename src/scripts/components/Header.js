@@ -11,10 +11,8 @@ class Header extends BaseComponent {
     this.loginHandler = () => {
       if (this.isLoggedIn) {
         this.render({ isLoggedIn: false });
-        this.isLoggedIn = false;
       } else {
         this.authForm.successFunc = (res) => {
-          this.isLoggedIn = true;
           this.render({ isLoggedIn: true, userName: res.name });
           this.popup.clearContent();
           this.popup.close();
@@ -37,9 +35,11 @@ class Header extends BaseComponent {
     if (props.isLoggedIn) {
       this.elements.authButton.textContent = props.userName;
       this.elements.savedLink.classList.remove('hidden');
+      this.isLoggedIn = true;
     } else {
       this.elements.authButton.textContent = 'Авторизоваться';
       this.elements.savedLink.classList.add('hidden');
+      this.isLoggedIn = false;
     }
   }
 }

@@ -1,22 +1,24 @@
 class Form {
   constructor(formElement, apiFunc, successFunc, popup) {
     this.formElement = formElement;
+    this.successFunc = successFunc;
+    this.apiFunc = apiFunc;
     this.popup = popup;
     this._getInputs();
 
     this._submit = (event) => {
       event.preventDefault();
-      apiFunc(this._getInfo())
-        .then(() => this.close())
-        .then((res) => {
-          successFunc(res);
-        })
+      const thisForm = this;
+      apiFunc(thisForm._getInfo())
+        .then((res) => this.successFunc(res))
         .catch((err) => {
           if (err.message === '401') {
             this.setServerError('Неправильное имя пользователя или пароль');
-          } else this.setServerError(err.message);
+          } else this.setServerError(err);
         });
     };
+
+    this.formElement.addEventListener('submit', this._submit);
   }
 
   _getInputs() {
@@ -42,18 +44,6 @@ class Form {
 
   setServerError(errorMessage) {
     this.formElement.querySelector('.form__error').textContent = errorMessage;
-  }
-
-  open() {
-    this.formElement.addEventListener('submit', this._submit);
-    this.popup.setContent(this.formElement);
-    this.popup.open();
-  }
-
-  close() {
-    this.formElement.removeEventListener('submit', this._submit);
-    this.popup.clearContent();
-    this.popup.close();
   }
 }
 

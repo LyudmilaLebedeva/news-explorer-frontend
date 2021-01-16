@@ -19,13 +19,12 @@ class Popup {
   }
 
   setContent(content) {
-    this.content = content;
-    this.container.appendChild(this.content);
+    this.container.appendChild(content);
   }
 
   clearContent() {
-    this.content.remove();
-    this.content = undefined;
+    this.container.textContent = '';
+    this.container.appendChild(this.closeButton);
   }
 
   open() {

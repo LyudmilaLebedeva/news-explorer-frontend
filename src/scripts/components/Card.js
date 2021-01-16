@@ -1,12 +1,47 @@
 class Card {
-  constructor(cardData) {
-    this.publishedAt = cardData.publishedAt;
+  constructor(cardData, state, mainApi) {
+    this.id = cardData._id;
+    this.publishedAt = cardData.date;
     this.title = cardData.title;
-    this.description = cardData.description;
-    this.source = cardData.source.name;
-    this.imageUrl = cardData.urlToImage;
+    this.description = cardData.text;
+    this.source = cardData.source;
+    this.imageUrl = cardData.image;
+    this.keyword = cardData.keyword;
+    this.state = state;
+    this.mainApi = mainApi;
 
     this._create();
+
+    this.buttonClickHandler = () => {
+      switch (this.state) {
+        // case 'marked':
+        // break;
+        case 'notMarked':
+          this.mainApi.createArticle({
+            keyword: this.keyword,
+            title: this.title,
+            text: this.description,
+            date: this.publishedAt,
+            source: this.source,
+            link: 'http://sdfsfsd.df',
+            image: this.imageUrl,
+          })
+            .then(() => {
+              this.state = 'marked';
+              this.renderIcon();
+            })
+            .catch((err) => console.log(err));
+          break;
+        case 'saved':
+          this.mainApi.deleteArticle(this.id)
+            .then(() => this.cardElement.remove())
+            .catch((err) => console.log(err));
+          break;
+        default:
+          break;
+      }
+    };
+    this.cardButton.addEventListener('click', this.buttonClickHandler);
   }
 
   _create() {
@@ -28,6 +63,26 @@ class Card {
   `;
     template.insertAdjacentHTML('beforeend', cardLayot);
     this.cardElement = template.firstElementChild;
+    this.cardButton = this.cardElement.querySelector('.card__btn');
+    this.renderIcon();
+  }
+
+  renderIcon() {
+    let buttonClass;
+    switch (this.state) {
+      case 'marked':
+        buttonClass = 'card__btn card__btn_type_marked';
+        break;
+      case 'notMarked':
+        buttonClass = 'card__btn card__btn_type_bookmark';
+        break;
+      case 'saved':
+        buttonClass = 'card__btn card__btn_type_delete';
+        break;
+      default:
+        buttonClass = 'card__btn';
+    }
+    this.cardButton.setAttribute('class', buttonClass);
   }
 }
 

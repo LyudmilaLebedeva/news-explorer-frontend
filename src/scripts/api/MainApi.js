@@ -35,6 +35,18 @@ class MainApi {
   clearToken() {
     this.options.headers.authorization = '';
   }
+
+  createArticle(body) {
+    return this._fetchMask('/articles', 'POST', body);
+  }
+
+  getArticles() {
+    return this._fetchMask('/articles');
+  }
+
+  deleteArticle(id) {
+    return this._fetchMask(`/articles/${id}`, 'DELETE');
+  }
 }
 
 export default MainApi;

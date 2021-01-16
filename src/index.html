@@ -13,7 +13,7 @@
 
 <body class="body">
   <section class="search">
-    <header class="header header_theme_transparent header_menu-opened">
+    <header class="header header_theme_transparent">
       <h1 class="header__title">NewsExplorer</h1>
       <button class="header__menu-button header__menu-button_type_open-white"></button>
       <nav class="header__menu">
@@ -42,83 +42,20 @@
       </p>
     </div>
     <form class="search__form">
-      <input type="text" required placeholder="Введите тему новости" class="search__input" />
+      <input name="keyword" type="text" required placeholder="Введите тему новости" class="search__input" />
       <input type="submit" value="Искать" class="search__submit" />
     </form>
   </section>
 
-  <section class="section section_background_blue">
-    <div class="section__content">
-      <i class="section__preloader"></i>
-      <h3 class="section__message">Идет поиск новостей...</h3>
-    </div>
-  </section>
+
 
   <section class="section section_background_blue">
-    <div class="section__content">
-      <div class="section__bad-face"></div>
-      <h3 class="section__nothing">Ничего не найдено</h3>
-      <p class="section__message">
-        К сожалению по вашему запросу ничего не найдено.
-      </p>
-    </div>
   </section>
 
-  <section class="section section_background_blue">
+  <section class="section section_background_blue hidden">
     <div class="section__content">
       <h2 class="section__title">Результаты поиска</h2>
-      <div class="card-container">
-        <article class="card">
-          <img src="./images/image_08.jpg" alt="Фото к статье"class="card__img" />
-          <button class="card__btn card__btn_type_bookmark"></button>
-          <div class="card__text">
-            <time datetime="2019-08-02" class="card__date">2 августа, 2019</time>
-            <h3 class="card__title">Национальное достояние – парки</h3>
-            <p class="card__subtitle">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь
-              начала складываться система национальных парков – охраняемых
-              территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <cite class="card__source">Лента.ру</cite>
-          </div>
-        </article>
 
-        <article class="card">
-          <img src="./images/image_04.jpg" alt="Фото к статье"class="card__img" />
-          <button class="card__btn card__btn_type_marked"></button>
-          <div class="card__text">
-            <time datetime="2019-08-02" class="card__date">2 августа, 2019</time>
-            <h3 class="card__title">
-              Лесные огоньки: история одной фотографии
-            </h3>
-            <p class="card__subtitle">
-              Фотограф отвлеклась от освещения суровой политической реальности
-              Мексики, чтобы запечатлеть ускользающую красоту одного из
-              местных чудес природы.
-            </p>
-            <cite class="card__source">Медуза</cite>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="./images/image_07.jpg" alt="Фото к статье"class="card__img" />
-          <button class="card__btn card__btn_type_bookmark"></button>
-          <p class="card__hint card__hint_type_mark">Войдите, чтобы сохранять статьи</p>
-          <div class="card__text">
-            <time datetime="2019-08-02" class="card__date">2 августа, 2019</time>
-            <h3 class="card__title">
-              «Первозданная тайга»: новый фотопроект Игоря Шпиленка
-            </h3>
-            <p class="card__subtitle">
-              Знаменитый фотограф снимает первозданные леса России, чтобы
-              рассказать о необходимости их сохранения. В этот раз он
-              отправился в Двинско-Пинежскую тайгу, где...
-            </p>
-            <cite class="card__source">РИА</cite>
-          </div>
-        </article>
-      </div>
-      <button class="card-container__more">Показать еще</button>
     </div>
   </section>
 
@@ -144,6 +81,8 @@
       </div>
     </div>
   </section>
+
+
 
   <footer class="footer">
     <div class="footer__links-group">
