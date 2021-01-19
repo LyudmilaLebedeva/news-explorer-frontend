@@ -1,26 +1,14 @@
 import BaseComponent from './BaseComponent';
 
 class Header extends BaseComponent {
-  constructor(elements, authForm, popup, handlers) {
+  constructor(elements, popup, handlers) {
     super(handlers);
     this.elements = elements;
-    this.authForm = authForm;
     this.popup = popup;
     this.isLoggedIn = false;
 
     this.loginHandler = () => {
-      if (this.isLoggedIn) {
-        this.render({ isLoggedIn: false });
-      } else {
-        this.authForm.successFunc = (res) => {
-          this.render({ isLoggedIn: true, userName: res.name });
-          this.popup.clearContent();
-          this.popup.close();
-        };
-        this.popup.clearContent();
-        this.popup.setContent(authForm.formElement);
-        this.popup.open();
-      }
+      if (this.isLoggedIn) { this.render({ isLoggedIn: false }); } else { this.popup.open(); }
     };
 
     this.menuButtonHandler = () => {

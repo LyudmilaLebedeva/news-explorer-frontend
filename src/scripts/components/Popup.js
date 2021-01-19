@@ -5,7 +5,6 @@ class Popup {
     this.container = popupElement.querySelector('.popup__content');
 
     this.closeHandler = () => {
-      this.clearContent();
       this.close();
     };
   }
@@ -19,6 +18,7 @@ class Popup {
   }
 
   setContent(content) {
+    this.clearContent();
     this.container.appendChild(content);
   }
 

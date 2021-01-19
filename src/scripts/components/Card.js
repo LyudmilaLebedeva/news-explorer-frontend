@@ -49,8 +49,8 @@ class Card {
     const cardLayot = `
   <article class="card">
   <img src="${this.imageUrl}" alt="Фото к статье"class="card__img" />
+  <button class="card__btn card__btn_type_bookmark" disabled></button>
   <p class="card__hint card__hint_type_mark">Войдите, чтобы сохранять статьи</p>
-  <button class="card__btn card__btn_type_bookmark"></button>
   <div class="card__text">
     <time datetime="${this.publishedAt}" class="card__date">${this.publishedAt}</time>
     <h3 class="card__title">${this.title}</h3>
@@ -64,6 +64,8 @@ class Card {
     template.insertAdjacentHTML('beforeend', cardLayot);
     this.cardElement = template.firstElementChild;
     this.cardButton = this.cardElement.querySelector('.card__btn');
+    this.hint = this.cardElement.querySelector('.card__hint');
+    this.hint.textContent = this.state === 'saved' ? 'Нажмите, чтобы удалить' : 'Войдите, чтобы сохранить';
     this.renderIcon();
   }
 

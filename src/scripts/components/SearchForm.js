@@ -10,7 +10,6 @@ class SearchForm extends BaseForm {
 
     const successFunc = (res) => {
       const { keyword } = this;
-      console.log(keyword);
       const cardsData = res.articles.map((article) => ({
         keyword,
         title: article.title,
@@ -21,7 +20,8 @@ class SearchForm extends BaseForm {
         image: article.urlToImage,
       }));
 
-      cardList.renderResults(cardsData);
+      cardList.cardsData = cardsData;
+      cardList.renderResults(0, 3);
     };
 
     const errorFunc = (err) => {

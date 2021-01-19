@@ -1,19 +1,25 @@
 import createElementFromString from '../utils/createElementFromString';
 
 class CardList {
-  constructor(cardsData, createCardFunc) {
-    this.cardData = cardsData;
-    this.createCardFunc = createCardFunc;
-    const elementLayot = '<div class="section__content"></div>';
+  constructor(cardsData, createCardFunc, parentElement) {
+    this.cardsData = cardsData;
+    this.createCardFunc = (cardData) => createCardFunc(cardData);
+    this.parentElement = parentElement;
+    this.cardCounter = 0;
+
     const loaderLayot = `
-    <div>
+    <div class="section__content">
     <i class="section__preloader"></i>
     <h3 class="section__message">Идет поиск новостей...</h3>
     </div>
     `;
-    const cardContainerLayot = '<div class="card-container"></div>';
+    const cardContainerLayot = `
+      <div class="card-container">
+
+      </div>
+    `;
     const errorLayot = `
-    <div>
+    <div class="section__content">
       <div class="section__bad-face"></div>
       <h3 class="section__nothing">Ничего не найдено</h3>
       <p class="section__message">
@@ -21,12 +27,40 @@ class CardList {
       </p>
     </div>
     `;
-
+    this.contentElement = createElementFromString(
+      `<div class="section__content">
+        <h2 class="section__title">Результаты поиска</h2>
+      </div>`,
+    );
     this.cardContainer = createElementFromString(cardContainerLayot);
-    this.element = createElementFromString(elementLayot);
     this.loaderElement = createElementFromString(loaderLayot);
     this.errorElement = createElementFromString(errorLayot);
-    this.cardCounter = 3;
+
+    this.showMoreElement = createElementFromString(
+      '<button class="card-container__more style="display: none;">Показать еще</button>',
+    );
+    this.showMoreElement.addEventListener('click', this.showMore.bind(this));
+
+    this.contentElement.appendChild(this.cardContainer);
+    this.contentElement.appendChild(this.showMoreElement);
+  }
+
+  renderResults(a = 0, b = this.cardsData.length) {
+    this.parentElement.textContent = '';
+    this.parentElement.appendChild(this.contentElement);
+    if (a === 0) {
+      this.cardContainer.textContent = '';
+    }
+    let maxNumb = b;
+    if (b > this.cardsData.length) {
+      maxNumb = this.cardsData.length;
+      this.showMoreElement.setAttribute('style', 'display: none');
+    } else this.showMoreElement.removeAttribute('style');
+    // this.contentElement.appendChild(this.cardContainer);
+    for (let i = a; i < maxNumb; i += 1) {
+      this.addCard(this.cardsData[i]);
+    }
+    this.cardCounter = b;
   }
 
   addCard(cardData) {
@@ -34,30 +68,18 @@ class CardList {
   }
 
   showMore() {
-    this.cardCounter += 3;
-    for (let i = this.cardCounter; i < this.cardCounter + 3 && i < this.cardsData.length; i += 1) {
-      this.addCard(this.cardsData[i]);
-    }
-  }
-
-  renderLoader() {
-    this.element.textContent = '';
-    this.element.appendChild(this.loaderElement);
+    this.renderResults(this.cardCounter, this.cardCounter + 3);
   }
 
   renderError(err) {
-    this.element.textContent = '';
-    this.element.appendChild(this.errorElement);
+    this.parentElement.textContent = '';
+    this.parentElement.appendChild(this.errorElement);
     console.log(err);
   }
 
-  renderResults(cardsData) {
-    this.cardContainer.textContent = '';
-    cardsData.forEach((card) => {
-      this.addCard(card);
-    });
-    this.element.textContent = '';
-    this.element.appendChild(this.cardContainer);
+  renderLoader() {
+    this.parentElement.textContent = '';
+    this.parentElement.appendChild(this.loaderElement);
   }
 }
 

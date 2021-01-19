@@ -6,30 +6,22 @@ import Form from './components/Form';
 import SearchForm from './components/SearchForm';
 import PopupMessage from './components/PopupMessage';
 import Card from './components/Card';
-
+import CardList from './components/CardList';
 import NewsApi from './api/NewsApi';
-
 import createElementFromString from './utils/createElementFromString';
-
 import authFormLayot from './templates/authFormLayot';
 import regFormLayot from './templates/regFormLayot';
 import successMessageLayot from './templates/successMessageLayot';
-import CardList from './components/CardList';
 
 const MAIN_API_URL = process.env.NODE_ENV === 'production'
   ? 'https://nomoreparties.co'
   : 'http://localhost:3000';
-
 const APIkey = '0403a27a7eab4af4ac93acad206d2cfa';
-
 const popupElement = document.querySelector('.popup');
 const closeButton = popupElement.querySelector('.popup__close');
-
 const successMessageElement = createElementFromString(successMessageLayot);
-
 const authFormElement = createElementFromString(authFormLayot);
 const regFormElement = createElementFromString(regFormLayot);
-
 const headerElement = document.querySelector('.header');
 const authButton = headerElement.querySelector('.header__auth-button');
 const savedLink = headerElement.querySelector('.header__menu-item_unselected_white');
@@ -42,25 +34,9 @@ const mainApi = new MainApi({
   baseUrl: MAIN_API_URL,
   headers: { 'Content-Type': 'application/json' },
 });
-
 const popup = new Popup(popupElement, closeButton);
+const header = new Header(headerElements, popup);
 const successMessage = new PopupMessage(popup, successMessageElement);
-
-const signin = (formData) => mainApi.signin(formData)
-  .then((res) => {
-    localStorage.setItem('token', res.token);
-    mainApi.setToken(res.token);
-    return mainApi.getUserData();
-  })
-  .then((res) => (res));
-
-const authForm = new Form(
-  authFormElement,
-  signin,
-  () => {},
-  popup,
-);
-
 const regForm = new Form(
   regFormElement,
   mainApi.signup.bind(mainApi),
@@ -68,26 +44,46 @@ const regForm = new Form(
   popup,
 );
 
+const setUserName = (userName) => {
+  localStorage.setItem('userName', userName);
+  header.render({ isLoggedIn: true, userName });
+};
+
+const setToken = (token) => {
+  localStorage.setItem('token', token);
+  mainApi.setToken(token);
+  mainApi.getUserData()
+    .then((userData) => {
+      setUserName(userData.name);
+      [... document.querySelectorAll('.card__btn')].forEach((element) => {
+        element.removeAttribute('disabled');
+      });
+    });
+};
+
+const signin = (formData) => mainApi.signin(formData)
+  .then((res) => {
+    setToken(res.token);
+  });
+
+const authForm = new Form(
+  authFormElement,
+  signin,
+  () => {
+    popup.close();
+    popup.setContent(authForm.formElement);
+  },
+);
+
 const formRegButton = authFormElement.querySelector('.form__link');
 const formAuthButton = regFormElement.querySelector('.form__link');
 const messageButton = successMessageElement.querySelector('.message__link');
-
-const regButtonHandler = () => {
-  popup.clearContent();
-  popup.setContent(regForm.formElement);
-  popup.open();
-};
-const authButtonHandler = () => {
-  popup.clearContent();
-  popup.setContent(authForm.formElement);
-  popup.open();
-};
-
+popup.setContent(authForm.formElement);
+const regButtonHandler = () => { popup.setContent(regForm.formElement); };
+const authButtonHandler = () => { popup.setContent(authForm.formElement); };
 formRegButton.addEventListener('click', regButtonHandler);
 formAuthButton.addEventListener('click', authButtonHandler);
 messageButton.addEventListener('click', authButtonHandler);
-
-const header = new Header(headerElements, authForm, popup);
 
 mainApi.setToken(localStorage.getItem('token'));
 mainApi.getUserData()
@@ -95,19 +91,14 @@ mainApi.getUserData()
   .catch(() => header.render({ isLoggedIn: false }));
 
 const newsApi = new NewsApi(APIkey);
-
 const searchFormElement = document.querySelector('.search__form');
-// const cardContainer = document.querySelector('.card-container');
 const resultsSection = document.querySelector('.section_background_blue');
-
 const createCardFunc = (cardData) => {
   const card = new Card(cardData, 'notMarked', mainApi);
   return card.cardElement;
 };
-
-const cardList = new CardList([], createCardFunc);
-resultsSection.appendChild(cardList.element);
-
+const cardList = new CardList([], createCardFunc, resultsSection);
+// resultsSection.appendChild(cardList.element);
 const searchForm = new SearchForm(searchFormElement, cardList, newsApi);
 searchFormElement.addEventListener('submit', searchForm.submitHandler.bind(this));
 
@@ -115,10 +106,4 @@ require('../images/image-03.jpg');
 require('../images/image-03-mini.jpg');
 require('../images/logout.svg');
 require('../images/logout_black.svg');
-require('../images/image_08.jpg');
-require('../images/image_01.jpg');
-require('../images/image_04.jpg');
-require('../images/image_05.jpg');
-require('../images/image_07.jpg');
-require('../images/image_06.jpg');
 require('../images/N.svg');
