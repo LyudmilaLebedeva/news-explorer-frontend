@@ -94,7 +94,7 @@ const newsApi = new NewsApi(APIkey);
 const searchFormElement = document.querySelector('.search__form');
 const resultsSection = document.querySelector('.section_background_blue');
 const createCardFunc = (cardData) => {
-  const card = new Card(cardData, 'notMarked', mainApi);
+  const card = new Card(cardData, { type: 'notMarked', active: true }, mainApi);
   return card.cardElement;
 };
 const cardList = new CardList([], createCardFunc, resultsSection);

@@ -25,7 +25,7 @@ const headerElements = {
 const header = new Header(headerElements);
 
 const newCardFunc = (cardData) => {
-  const card = new Card(cardData, 'saved', mainApi);
+  const card = new Card(cardData, { active: true, type: 'saved' }, mainApi);
   return card.cardElement;
 };
 

@@ -9,6 +9,8 @@
 @import url(./__img/card__img.css);
 
 .card {
+  text-decoration: none;
+  color: inherit;
   width: 100%;
   background-color: white;
   margin: 0 auto;

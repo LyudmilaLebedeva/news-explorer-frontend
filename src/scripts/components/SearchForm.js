@@ -10,13 +10,14 @@ class SearchForm extends BaseForm {
 
     const successFunc = (res) => {
       const { keyword } = this;
+      console.log(res.articles);
       const cardsData = res.articles.map((article) => ({
         keyword,
         title: article.title,
         text: article.description,
         date: article.publishedAt,
         source: article.source.name,
-        link: 'http://sdfsfsd.df',
+        link: article.url,
         image: article.urlToImage,
       }));
 

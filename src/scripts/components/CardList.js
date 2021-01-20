@@ -15,7 +15,6 @@ class CardList {
     `;
     const cardContainerLayot = `
       <div class="card-container">
-
       </div>
     `;
     const errorLayot = `
@@ -52,11 +51,10 @@ class CardList {
       this.cardContainer.textContent = '';
     }
     let maxNumb = b;
-    if (b > this.cardsData.length) {
+    if (b >= this.cardsData.length) {
       maxNumb = this.cardsData.length;
       this.showMoreElement.setAttribute('style', 'display: none');
     } else this.showMoreElement.removeAttribute('style');
-    // this.contentElement.appendChild(this.cardContainer);
     for (let i = a; i < maxNumb; i += 1) {
       this.addCard(this.cardsData[i]);
     }
