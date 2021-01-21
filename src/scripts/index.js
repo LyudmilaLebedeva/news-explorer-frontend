@@ -8,6 +8,7 @@ import PopupMessage from './components/PopupMessage';
 import Card from './components/Card';
 import CardList from './components/CardList';
 import NewsApi from './api/NewsApi';
+import FormValidator from './components/FormValidator';
 import createElementFromString from './utils/createElementFromString';
 import authFormLayot from './templates/authFormLayot';
 import regFormLayot from './templates/regFormLayot';
@@ -71,9 +72,14 @@ const authForm = new Form(
   signin,
   () => {
     popup.close();
+    authForm.clear();
+    authForm.clearErrors();
     popup.setContent(authForm.formElement);
   },
 );
+
+const authFormValidator = new FormValidator(authForm.formElement);
+const regFormValidator = new FormValidator(regForm.formElement);
 
 const formRegButton = authFormElement.querySelector('.form__link');
 const formAuthButton = regFormElement.querySelector('.form__link');
@@ -100,6 +106,7 @@ const createCardFunc = (cardData) => {
 const cardList = new CardList([], createCardFunc, resultsSection);
 // resultsSection.appendChild(cardList.element);
 const searchForm = new SearchForm(searchFormElement, cardList, newsApi);
+const searchFormValidator = new FormValidator(searchForm.formElement);
 searchFormElement.addEventListener('submit', searchForm.submitHandler.bind(this));
 
 require('../images/image-03.jpg');

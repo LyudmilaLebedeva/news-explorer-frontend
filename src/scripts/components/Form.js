@@ -45,6 +45,20 @@ class Form {
   setServerError(errorMessage) {
     this.formElement.querySelector('.form__error').textContent = errorMessage;
   }
+
+  clearErrors() {
+    const msgBoxes = [...this.form.querySelectorAll('.form__input-error')];
+
+    msgBoxes.forEach((box) => {
+      box.textContent = '';
+    });
+  }
+
+  clear() {
+    this.inputs.forEach((inputElement) => {
+      inputElement.value = '';
+    });
+  }
 }
 
 export default Form;
