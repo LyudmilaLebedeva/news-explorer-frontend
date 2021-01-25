@@ -1,6 +1,5 @@
 import '../pages/savednews.css';
-
-import MainApi from './api/MainApi';
+import MainApiExtended from './api/MainApiExtended';
 import Header from './components/Header';
 import CardList from './components/CardList';
 import Card from './components/Card';
@@ -16,11 +15,20 @@ const MAIN_API_URL = process.env.NODE_ENV === 'production'
   ? 'https://nomoreparties.co'
   : 'http://localhost:3000';
 
-const mainApi = new MainApi({
+const mainApiOptions = {
   baseUrl: MAIN_API_URL,
   headers: { 'Content-Type': 'application/json' },
-});
+};
 
+const mainApi = new MainApiExtended(mainApiOptions);
+
+const authButtonHandlers = {
+  logout: () => {
+    mainApi.setToken('');
+    localStorage.removeItem('token');
+    window.location.href = '../index.html';
+  },
+};
 const headerElement = document.querySelector('.header');
 const authButton = headerElement.querySelector('.header__auth-button');
 const savedLink = headerElement.querySelector('.header__menu-item_underline_black');
@@ -29,13 +37,12 @@ const headerElements = {
   authButton, menuButton, savedLink, headerElement,
 };
 
-const header = new Header(headerElements);
+const header = new Header(headerElements, authButtonHandlers);
 
 const newCardFunc = (cardData) => {
   const card = new Card(cardData, { active: true, type: 'saved' }, mainApi);
   return card.cardElement;
 };
-
 const resultsSection = document.querySelector('.section_background_blue');
 const cardList = new CardList([], newCardFunc, resultsSection);
 
@@ -75,29 +82,31 @@ const createKeywordsElement = (topKeywords) => {
   return createElementFromString(text);
 };
 
-mainApi.setToken(localStorage.getItem('token'));
-mainApi.getUserData()
-  .then((res) => {
-    header.render({ userName: res.name, isLoggedIn: true });
-    localStorage.setItem('userName', res.name);
-    return mainApi.getArticles();
-  })
-  .then((res) => {
-    cardList.cardsData = res;
-    cardList.renderResults();
-    // resultsSection.appendChild(cardList.element);
-    return res.map((article) => article.keyword);
-  })
-  .then((keywords) => {
-    const topKeywords = keywordsCounter(keywords);
-    console.log(topKeywords);
-    const userName = localStorage.getItem('userName', 'res.name');
-    const numb = keywords.length;
-    const ends = getEnds(numb);
-    helloElement.textContent = `${userName}, у вас ${numb || 'нет'} сохраненн${ends[0]} стат${ends[1]}`;
-    if (numb) helloElement.append(createKeywordsElement(topKeywords));
-  })
-  .catch((err) => {
-    // header.render({ isLoggedIn: false })
-    console.log(err);
-  });
+const renderKeywords = (keywords) => {
+  const topKeywords = keywordsCounter(keywords);
+  const userName = localStorage.getItem('userName', 'res.name');
+  const numb = keywords.length;
+  const ends = getEnds(numb);
+  helloElement.textContent = `${userName}, у вас ${numb || 'нет'} сохраненн${ends[0]} стат${ends[1]}`;
+  if (numb) document.querySelector('.saved__content').appendChild(createKeywordsElement(topKeywords));
+};
+
+mainApi.onLoginFail = () => {
+  window.location.href = '../index.html';
+};
+
+mainApi.onLoginSuccess = (userData) => {
+  header.render({ isLoggedIn: true, userName: userData.name });
+  mainApi.getArticles()
+    .then((res) => {
+      cardList.cardsData = res;
+      cardList.renderResults();
+      return res.map((article) => article.keyword);
+    })
+    .then(renderKeywords)
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+mainApi.getUserData(localStorage.getItem('token'));

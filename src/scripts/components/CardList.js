@@ -1,7 +1,7 @@
 import createElementFromString from '../utils/createElementFromString';
 
 class CardList {
-  constructor(cardsData, createCardFunc, parentElement) {
+  constructor(cardsData, createCardFunc, parentElement, title) {
     this.cardsData = cardsData;
     this.createCardFunc = (cardData) => createCardFunc(cardData);
     this.parentElement = parentElement;
@@ -17,6 +17,7 @@ class CardList {
       <div class="card-container">
       </div>
     `;
+
     const errorLayot = `
     <div class="section__content">
       <div class="section__bad-face"></div>
@@ -28,9 +29,15 @@ class CardList {
     `;
     this.contentElement = createElementFromString(
       `<div class="section__content">
-        <h2 class="section__title">Результаты поиска</h2>
       </div>`,
     );
+
+    if (title) {
+      this.contentElement.appendChild(createElementFromString(
+        `<h2 class="section__title">${title}</h2>`,
+      ));
+    }
+
     this.cardContainer = createElementFromString(cardContainerLayot);
     this.loaderElement = createElementFromString(loaderLayot);
     this.errorElement = createElementFromString(errorLayot);

@@ -1,14 +1,10 @@
-import BaseComponent from './BaseComponent';
-
-class Header extends BaseComponent {
-  constructor(elements, popup, handlers) {
-    super(handlers);
+class Header {
+  constructor(elements, handlers) {
     this.elements = elements;
-    this.popup = popup;
     this.isLoggedIn = false;
 
     this.loginHandler = () => {
-      if (this.isLoggedIn) { this.render({ isLoggedIn: false }); } else { this.popup.open(); }
+      if (this.isLoggedIn) { handlers.logout(); } else { handlers.login(); }
     };
 
     this.menuButtonHandler = () => {

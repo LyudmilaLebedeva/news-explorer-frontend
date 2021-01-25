@@ -1,8 +1,8 @@
 class Popup {
-  constructor(popupElement, closeButton) {
-    this.popupElement = popupElement;
-    this.closeButton = closeButton;
-    this.container = popupElement.querySelector('.popup__content');
+  constructor(elements) {
+    this.popupElement = elements.popupElement;
+    this.closeButtonElement = elements.closeButtonElement;
+    this.container = elements.popupElement.querySelector('.popup__content');
 
     this.closeHandler = () => {
       this.close();
@@ -10,11 +10,11 @@ class Popup {
   }
 
   _setEventListeners() {
-    this.closeButton.addEventListener('click', this.closeHandler);
+    this.closeButtonElement.addEventListener('click', this.closeHandler);
   }
 
   _deleteEventListeners() {
-    this.closeButton.removeEventListener('click', this.closeHandler);
+    this.closeButtonElement.removeEventListener('click', this.closeHandler);
   }
 
   setContent(content) {
@@ -24,7 +24,7 @@ class Popup {
 
   clearContent() {
     this.container.textContent = '';
-    this.container.appendChild(this.closeButton);
+    this.container.appendChild(this.closeButtonElement);
   }
 
   open() {

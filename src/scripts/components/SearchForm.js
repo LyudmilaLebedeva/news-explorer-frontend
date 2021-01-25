@@ -10,7 +10,7 @@ class SearchForm extends BaseForm {
 
     const successFunc = (res) => {
       const { keyword } = this;
-      console.log(res.articles);
+      if (res.articles.length === 0) throw Error();
       const cardsData = res.articles.map((article) => ({
         keyword,
         title: article.title,

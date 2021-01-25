@@ -1,9 +1,8 @@
 class Form {
-  constructor(formElement, apiFunc, successFunc, popup) {
+  constructor(formElement, apiFunc, successFunc) {
     this.formElement = formElement;
     this.successFunc = successFunc;
     this.apiFunc = apiFunc;
-    this.popup = popup;
     this._getInputs();
 
     this._submit = (event) => {
@@ -47,7 +46,7 @@ class Form {
   }
 
   clearErrors() {
-    const msgBoxes = [...this.form.querySelectorAll('.form__input-error')];
+    const msgBoxes = [...this.formElement.querySelectorAll('.form__input-error')];
 
     msgBoxes.forEach((box) => {
       box.textContent = '';

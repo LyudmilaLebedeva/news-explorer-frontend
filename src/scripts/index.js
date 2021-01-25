@@ -1,10 +1,9 @@
 import '../pages/index.css';
-import MainApi from './api/MainApi';
+import MainApiExtended from './api/MainApiExtended';
 import Header from './components/Header';
 import Popup from './components/Popup';
 import Form from './components/Form';
 import SearchForm from './components/SearchForm';
-import PopupMessage from './components/PopupMessage';
 import Card from './components/Card';
 import CardList from './components/CardList';
 import NewsApi from './api/NewsApi';
@@ -14,15 +13,56 @@ import authFormLayot from './templates/authFormLayot';
 import regFormLayot from './templates/regFormLayot';
 import successMessageLayot from './templates/successMessageLayot';
 
+// Настраиваем MainAPI
 const MAIN_API_URL = process.env.NODE_ENV === 'production'
   ? 'https://nomoreparties.co'
   : 'http://localhost:3000';
-const APIkey = '0403a27a7eab4af4ac93acad206d2cfa';
+const mainApiOptions = { baseUrl: MAIN_API_URL, headers: { 'Content-Type': 'application/json' } };
+const mainApi = new MainApiExtended(mainApiOptions);
+
+// Настраиваем popup
 const popupElement = document.querySelector('.popup');
-const closeButton = popupElement.querySelector('.popup__close');
+const closeButtonElement = popupElement.querySelector('.popup__close');
+const popupElements = { popupElement, closeButtonElement };
+const popup = new Popup(popupElements);
+
+// Cообщение об успешной регистрации
 const successMessageElement = createElementFromString(successMessageLayot);
+
+// Настраиваем форму авторизации
 const authFormElement = createElementFromString(authFormLayot);
+const authForm = new Form(authFormElement,
+  mainApi.signin.bind(mainApi),
+  (res) => {
+    localStorage.setItem('token', res.token);
+    mainApi.getUserData(res.token);
+    popup.close();
+  });
+
+// Настраиваем форму регистрации
 const regFormElement = createElementFromString(regFormLayot);
+const regForm = new Form(
+  regFormElement, mainApi.signup.bind(mainApi), popup.setContent(successMessageElement),
+);
+
+// Валидация форм
+new FormValidator(authForm.formElement);
+new FormValidator(regForm.formElement);
+
+// Настраиваем кнопки на формах
+const formRegButton = authFormElement.querySelector('.form__link');
+const formAuthButton = regFormElement.querySelector('.form__link');
+const messageButton = successMessageElement.querySelector('.message__link');
+
+popup.setContent(authForm.formElement);
+const regButtonHandler = () => { popup.setContent(regForm.formElement); };
+const authButtonHandler = () => { popup.setContent(authForm.formElement); };
+
+formRegButton.addEventListener('click', regButtonHandler);
+formAuthButton.addEventListener('click', authButtonHandler);
+messageButton.addEventListener('click', authButtonHandler);
+
+// Настраиваем header
 const headerElement = document.querySelector('.header');
 const authButton = headerElement.querySelector('.header__auth-button');
 const savedLink = headerElement.querySelector('.header__menu-item_unselected_white');
@@ -30,85 +70,62 @@ const menuButton = headerElement.querySelector('.header__menu-button');
 const headerElements = {
   authButton, savedLink, menuButton, headerElement,
 };
+const authButtonHandlers = {};
+const header = new Header(headerElements, authButtonHandlers);
 
-const mainApi = new MainApi({
-  baseUrl: MAIN_API_URL,
-  headers: { 'Content-Type': 'application/json' },
-});
-const popup = new Popup(popupElement, closeButton);
-const header = new Header(headerElements, popup);
-const successMessage = new PopupMessage(popup, successMessageElement);
-const regForm = new Form(
-  regFormElement,
-  mainApi.signup.bind(mainApi),
-  successMessage.showInPopup.bind(successMessage),
-  popup,
-);
-
-const setUserName = (userName) => {
-  localStorage.setItem('userName', userName);
-  header.render({ isLoggedIn: true, userName });
+authButtonHandlers.login = () => {
+  authForm.clear();
+  authForm.clearErrors();
+  authForm.setServerError('');
+  popup.setContent(authForm.formElement);
+  popup.open();
 };
 
-const setToken = (token) => {
-  localStorage.setItem('token', token);
-  mainApi.setToken(token);
-  mainApi.getUserData()
-    .then((userData) => {
-      setUserName(userData.name);
-      [... document.querySelectorAll('.card__btn')].forEach((element) => {
-        element.removeAttribute('disabled');
-      });
+authButtonHandlers.logout = () => {
+  mainApi.setToken('');
+  localStorage.removeItem('token');
+  header.render({ isLoggedIn: false });
+  if (document.querySelectorAll('.card__btn')) {
+    [...document.querySelectorAll('.card__btn')].forEach((button) => {
+      button.setAttribute('disabled', 'disabled');
     });
+  }
 };
 
-const signin = (formData) => mainApi.signin(formData)
-  .then((res) => {
-    setToken(res.token);
-  });
+mainApi.onLoginSuccess = (res) => {
+  header.render({ isLoggedIn: true, userName: res.name });
+  if (document.querySelectorAll('.card__btn')) {
+    [...document.querySelectorAll('.card__btn')].forEach((button) => {
+      button.removeAttribute('disabled');
+    });
+  }
+};
 
-const authForm = new Form(
-  authFormElement,
-  signin,
-  () => {
-    popup.close();
-    authForm.clear();
-    authForm.clearErrors();
-    popup.setContent(authForm.formElement);
-  },
-);
+mainApi.onLoginFail = () => {
+  header.render({ isLoggedIn: false });
+};
 
-const authFormValidator = new FormValidator(authForm.formElement);
-const regFormValidator = new FormValidator(regForm.formElement);
+mainApi.getUserData(localStorage.getItem('token'));
 
-const formRegButton = authFormElement.querySelector('.form__link');
-const formAuthButton = regFormElement.querySelector('.form__link');
-const messageButton = successMessageElement.querySelector('.message__link');
-popup.setContent(authForm.formElement);
-const regButtonHandler = () => { popup.setContent(regForm.formElement); };
-const authButtonHandler = () => { popup.setContent(authForm.formElement); };
-formRegButton.addEventListener('click', regButtonHandler);
-formAuthButton.addEventListener('click', authButtonHandler);
-messageButton.addEventListener('click', authButtonHandler);
-
-mainApi.setToken(localStorage.getItem('token'));
-mainApi.getUserData()
-  .then((res) => header.render({ userName: res.name, isLoggedIn: true }))
-  .catch(() => header.render({ isLoggedIn: false }));
-
+// NewsAPI
+const APIkey = '0403a27a7eab4af4ac93acad206d2cfa';
 const newsApi = new NewsApi(APIkey);
+
+// Контейнер для карточек
 const searchFormElement = document.querySelector('.search__form');
 const resultsSection = document.querySelector('.section_background_blue');
 const createCardFunc = (cardData) => {
-  const card = new Card(cardData, { type: 'notMarked', active: true }, mainApi);
+  const card = new Card(cardData, { type: 'notMarked', active: header.isLoggedIn }, mainApi);
   return card.cardElement;
 };
-const cardList = new CardList([], createCardFunc, resultsSection);
-// resultsSection.appendChild(cardList.element);
-const searchForm = new SearchForm(searchFormElement, cardList, newsApi);
-const searchFormValidator = new FormValidator(searchForm.formElement);
-searchFormElement.addEventListener('submit', searchForm.submitHandler.bind(this));
 
+const cardList = new CardList([], createCardFunc, resultsSection, 'Результаты поиска');
+
+// Форма поиска
+const searchForm = new SearchForm(searchFormElement, cardList, newsApi);
+new FormValidator(searchForm.formElement);
+
+// Статичные изображения
 require('../images/image-03.jpg');
 require('../images/image-03-mini.jpg');
 require('../images/logout.svg');
