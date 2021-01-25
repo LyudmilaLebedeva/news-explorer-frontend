@@ -42,7 +42,9 @@ const authForm = new Form(authFormElement,
 // Настраиваем форму регистрации
 const regFormElement = createElementFromString(regFormLayot);
 const regForm = new Form(
-  regFormElement, mainApi.signup.bind(mainApi), popup.setContent(successMessageElement).bind(popup),
+  regFormElement,
+  mainApi.signup.bind(mainApi),
+  () => { popup.setContent(successMessageElement); },
 );
 
 // Валидация форм
