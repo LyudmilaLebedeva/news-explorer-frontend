@@ -12,7 +12,7 @@ const keywordsCounter = (keywords) => {
 };
 
 const MAIN_API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://nomoreparties.co'
+  ? 'https://api.lyudmila.students.nomoreparties.space'
   : 'http://localhost:3000';
 
 const mainApiOptions = {
@@ -81,10 +81,9 @@ const createKeywordsElement = (topKeywords) => {
 
   return createElementFromString(text);
 };
-
+let userName;
 const renderKeywords = (keywords) => {
   const topKeywords = keywordsCounter(keywords);
-  const userName = localStorage.getItem('userName', 'res.name');
   const numb = keywords.length;
   const ends = getEnds(numb);
   helloElement.textContent = `${userName}, у вас ${numb || 'нет'} сохраненн${ends[0]} стат${ends[1]}`;
@@ -92,11 +91,13 @@ const renderKeywords = (keywords) => {
 };
 
 mainApi.onLoginFail = () => {
-  window.location.href = '../index.html';
+  window.location.href = './index.html';
 };
 
 mainApi.onLoginSuccess = (userData) => {
-  header.render({ isLoggedIn: true, userName: userData.name });
+  userName = userData.name;
+  header.render({ isLoggedIn: true, userName });
+
   mainApi.getArticles()
     .then((res) => {
       cardList.cardsData = res;

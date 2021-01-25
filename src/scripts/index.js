@@ -15,7 +15,7 @@ import successMessageLayot from './templates/successMessageLayot';
 
 // Настраиваем MainAPI
 const MAIN_API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://nomoreparties.co'
+  ? 'https://api.lyudmila.students.nomoreparties.space'
   : 'http://localhost:3000';
 const mainApiOptions = { baseUrl: MAIN_API_URL, headers: { 'Content-Type': 'application/json' } };
 const mainApi = new MainApiExtended(mainApiOptions);
