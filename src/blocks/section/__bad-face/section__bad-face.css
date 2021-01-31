@@ -1,0 +1,6 @@
+.section__bad-face {
+  margin: 0 auto;
+  background-image: url('../../../images/not-found_v1.svg');
+  width: 96px;
+  height: 96px;
+}

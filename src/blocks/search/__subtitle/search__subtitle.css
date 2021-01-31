@@ -1,0 +1,9 @@
+.search__subtitle {
+  margin: 0;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  max-width: 545px;
+}

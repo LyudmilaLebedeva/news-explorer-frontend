@@ -1,0 +1,37 @@
+@import url(__title/header__title.css);
+@import url(__menu-button/header__menu-button.css);
+@import url(__menu/header__menu.css);
+@import url(__menu-list/header__menu-list.css);
+@import url(__menu-item/header__menu-item.css);
+
+@import url(__menu-link/header__menu-link.css);
+@import url(__auth-button/header__auth-button.css);
+@import url(__logout-img/header__logout-img.css);
+@import url(_theme/_white/header_theme_white.css);
+@import url(_theme/_transparent/header_theme_transparent.css);
+@import url(_menu-opened/header_menu-opened.css);
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
+
+  z-index: 4;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    align-items: center;
+    padding: 0 40px;
+  }
+}
+
+@media screen and (min-width: 1302px) {
+  .header {
+    padding: 0 calc(50% - 616px) 0;
+  }
+}
+
+

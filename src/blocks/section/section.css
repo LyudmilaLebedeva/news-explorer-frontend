@@ -1,0 +1,11 @@
+@import url(__title/section__title.css);
+@import url(_backgroud/_blue/section_background_blue.css);
+@import url(__content/section__content.css);
+@import url(__preloader/section__preloader.css);
+@import url(__message/section__message.css);
+@import url(__nothing/section__nothing.css);
+@import url(__bad-face/section__bad-face.css);
+
+.section {
+  margin: 0 auto;
+}

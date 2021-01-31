@@ -1,0 +1,21 @@
+.card__text {
+  display: flex;
+  flex-direction: column;
+  height: 244px;
+  padding: 16px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .card__text {
+    height: 270px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card__text {
+    height: 304px;
+    padding: 24px;
+  }
+}

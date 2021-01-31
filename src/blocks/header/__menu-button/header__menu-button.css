@@ -1,0 +1,16 @@
+@import url(_type/_close/header__menu-button_type_close.css);
+@import url(_type/_open-black/header__menu-button_type_open-black.css);
+@import url(_type/_open-white/header__menu-button_type_open-white.css);
+
+.header__menu-button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header__menu-button {
+    display: none;
+  }
+}

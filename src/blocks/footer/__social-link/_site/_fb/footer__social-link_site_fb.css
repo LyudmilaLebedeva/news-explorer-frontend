@@ -1,0 +1,9 @@
+.footer__social-link_site_fb {
+  background-image: url(../../../../../images/fb.svg);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .footer__social-link {
+    background-image: url(../../../../../images/fb-cir.svg);
+  }
+}

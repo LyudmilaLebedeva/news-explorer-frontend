@@ -1,0 +1,48 @@
+@import url(_color/_white/header__auth-button_color_white.css);
+@import url(_color/_black/header__auth-button_color_black.css);
+
+.header__auth-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+
+  height: 56px;
+  border-radius: 100px;
+  margin-top: 22px;
+  margin-bottom: 7px;
+  width: 100%;
+  color: inherit;
+  background: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .header__auth-button {
+    margin: 0;
+    padding: 8px 15px;
+    height: unset;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__auth-button {
+    font-size: 18px;
+    padding: 12px 19px;
+  }
+}
+
+.header__auth-button::after {
+  content: '';
+  background-image: url(../../../images/logout.svg);
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-position: center;
+}

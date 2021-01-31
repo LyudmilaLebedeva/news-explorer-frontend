@@ -1,0 +1,23 @@
+.footer__link {
+  display: inline-block;
+
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+
+  margin-bottom: 27px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__link{
+    line-height: 24px;
+    margin-right: 18px;
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer__link{
+    margin-right: 32px;
+  }
+}

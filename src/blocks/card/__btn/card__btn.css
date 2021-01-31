@@ -1,0 +1,33 @@
+@import url(_type/_bookmark/card__btn_type_bookmark.css);
+@import url(_type/_delete/card__btn_type_delete.css);
+@import url(_type/_marked/card__btn_type_marked.css);
+
+.card__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .card__btn {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card__btn {
+    top: 24px;
+    right: 24px;
+  }
+}

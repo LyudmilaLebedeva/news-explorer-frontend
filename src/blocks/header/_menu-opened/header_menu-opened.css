@@ -1,0 +1,17 @@
+@media screen and (max-width: 767px) {
+  .header_menu-opened {
+    color: white;
+    background-color: #1a1b22;
+    border-bottom: solid 3px #444;
+    box-shadow: unset;
+    position: fixed;
+  }
+
+  .header_menu-opened .header__menu {
+    display: block;
+  }
+
+  .header_menu-opened .header__menu-button {
+    background: url(../../../images/close_btn.svg);
+  }
+}

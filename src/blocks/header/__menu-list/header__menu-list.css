@@ -1,0 +1,29 @@
+.header__menu-list {
+  list-style-type: none;
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .header__menu-list {
+    padding: 16px;
+    background-color: #1A1B22;
+    color: white;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header__menu-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__menu-list {
+    font-size: 18px;
+  }
+}

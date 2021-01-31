@@ -1,0 +1,37 @@
+@import url(_underline/_black/header__menu-item_underline_black.css);
+@import url(_underline/_white/header__menu-item_underline_white.css);
+@import url(_unselected/_white/header__menu-item_unselected_white.css);
+
+.header__menu-item {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  width: 100%;
+  box-sizing: border-box;
+
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .header__menu-item {
+    width: max-content;
+    min-height: 66px;
+    margin-right: 16px;
+    font-size: 16px;
+  }
+
+  .header__menu-item:last-of-type{
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header__menu-item {
+    margin-right: 34px;
+    min-height: 80px;
+    font-size: 18px;
+  }
+}

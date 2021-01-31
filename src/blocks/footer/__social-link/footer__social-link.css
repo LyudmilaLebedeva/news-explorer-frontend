@@ -1,0 +1,10 @@
+@import url(_site/_fb/footer__social-link_site_fb.css);
+@import url(_site/_github/footer__social-link_site_github.css);
+
+.footer__social-link {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-position: center;
+}

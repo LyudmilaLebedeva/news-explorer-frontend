@@ -1,0 +1,6 @@
+.header_theme_transparent {
+  color: white;
+  background: rgba(196, 196, 196, 0.01);
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+  position: relative;
+}

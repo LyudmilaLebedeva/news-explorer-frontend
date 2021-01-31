@@ -1,0 +1,20 @@
+.saved__keywords {
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+}
+
+
+@media screen and (min-width: 768px) {
+  .saved__keywords {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .saved__keywords {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

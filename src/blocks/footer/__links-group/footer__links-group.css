@@ -1,0 +1,12 @@
+.footer__links-group {
+  display: flex;
+  justify-content: space-between;
+
+  flex-direction: row;
+}
+
+@media screen and (min-width: 768px) {
+  .footer{
+    align-items: center;
+  }
+}

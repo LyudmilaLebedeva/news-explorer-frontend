@@ -1,0 +1,15 @@
+@import url(_closed/header__menu_closed.css);
+
+@media screen and (max-width: 767px) {
+  .header__menu {
+    display: none;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow: scroll;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: -1;
+  }
+}
